@@ -47,55 +47,6 @@
             this.panelMain.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Variable Text", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(33, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(200, 61);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "HealNet";
-            // 
-            // panelMain
-            // 
-            this.panelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(225)))));
-            this.panelMain.Controls.Add(this.label2);
-            this.panelMain.Controls.Add(this.panel1);
-            this.panelMain.Controls.Add(this.label1);
-            this.panelMain.Controls.Add(btnCikis);
-            this.panelMain.Controls.Add(btnDoktor);
-            this.panelMain.Controls.Add(btnMuayene);
-            this.panelMain.Controls.Add(btnHastaKayit);
-            this.panelMain.Controls.Add(btnHastaArama);
-            this.panelMain.Controls.Add(btnRandevu);
-            this.panelMain.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.panelMain.Location = new System.Drawing.Point(112, 72);
-            this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(975, 666);
-            this.panelMain.TabIndex = 7;
-            this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Variable Text", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(435, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(280, 61);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Dashboard";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(110)))), ((int)(((byte)(255)))));
-            this.panel1.Location = new System.Drawing.Point(445, 88);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(474, 172);
-            this.panel1.TabIndex = 7;
-            // 
             // btnCikis
             // 
             btnCikis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(110)))), ((int)(((byte)(255)))));
@@ -199,12 +150,61 @@
             btnRandevu.Text = "Randevu Yönetimi";
             btnRandevu.UseVisualStyleBackColor = false;
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Variable Text", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(33, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(200, 61);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "HealNet";
+            // 
+            // panelMain
+            // 
+            this.panelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(225)))));
+            this.panelMain.Controls.Add(this.label2);
+            this.panelMain.Controls.Add(this.panel1);
+            this.panelMain.Controls.Add(this.label1);
+            this.panelMain.Controls.Add(btnCikis);
+            this.panelMain.Controls.Add(btnDoktor);
+            this.panelMain.Controls.Add(btnMuayene);
+            this.panelMain.Controls.Add(btnHastaKayit);
+            this.panelMain.Controls.Add(btnHastaArama);
+            this.panelMain.Controls.Add(btnRandevu);
+            this.panelMain.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.panelMain.Location = new System.Drawing.Point(78, 90);
+            this.panelMain.Name = "panelMain";
+            this.panelMain.Size = new System.Drawing.Size(975, 614);
+            this.panelMain.TabIndex = 7;
+            this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Variable Text", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(435, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(280, 61);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Dashboard";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(110)))), ((int)(((byte)(255)))));
+            this.panel1.Location = new System.Drawing.Point(445, 88);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(474, 172);
+            this.panel1.TabIndex = 7;
+            // 
             // AnaEkran
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(110)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1236, 738);
+            this.ClientSize = new System.Drawing.Size(1150, 700);
             this.Controls.Add(this.panelMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AnaEkran";
