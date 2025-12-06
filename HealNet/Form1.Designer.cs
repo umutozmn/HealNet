@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBoxAdmin = new System.Windows.Forms.CheckBox();
             this.checkBoxSifreGoster = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.lblKullanıcıAdı = new System.Windows.Forms.Label();
@@ -37,7 +38,6 @@
             this.txtKullaniciAdi = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.checkBoxAdmin = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,21 +51,33 @@
             this.panel1.Controls.Add(this.lblSifre);
             this.panel1.Controls.Add(this.txtSifre);
             this.panel1.Controls.Add(this.txtKullaniciAdi);
-            this.panel1.Location = new System.Drawing.Point(255, 245);
+            this.panel1.Location = new System.Drawing.Point(228, 222);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(380, 450);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // checkBoxAdmin
+            // 
+            this.checkBoxAdmin.AutoSize = true;
+            this.checkBoxAdmin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBoxAdmin.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.checkBoxAdmin.Location = new System.Drawing.Point(309, 3);
+            this.checkBoxAdmin.Name = "checkBoxAdmin";
+            this.checkBoxAdmin.Size = new System.Drawing.Size(68, 21);
+            this.checkBoxAdmin.TabIndex = 3;
+            this.checkBoxAdmin.Text = "admin";
+            this.checkBoxAdmin.UseVisualStyleBackColor = true;
+            // 
             // checkBoxSifreGoster
             // 
             this.checkBoxSifreGoster.AutoSize = true;
             this.checkBoxSifreGoster.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBoxSifreGoster.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.checkBoxSifreGoster.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.checkBoxSifreGoster.Location = new System.Drawing.Point(70, 263);
             this.checkBoxSifreGoster.Name = "checkBoxSifreGoster";
-            this.checkBoxSifreGoster.Size = new System.Drawing.Size(110, 21);
-            this.checkBoxSifreGoster.TabIndex = 5;
+            this.checkBoxSifreGoster.Size = new System.Drawing.Size(116, 23);
+            this.checkBoxSifreGoster.TabIndex = 4;
             this.checkBoxSifreGoster.Text = "Şifreyi Göster";
             this.checkBoxSifreGoster.UseVisualStyleBackColor = true;
             this.checkBoxSifreGoster.CheckedChanged += new System.EventHandler(this.checkBoxSifreGoster_CheckedChanged);
@@ -76,12 +88,12 @@
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button1.Font = new System.Drawing.Font("Segoe UI Variable Text", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(116, 322);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(144, 34);
-            this.button1.TabIndex = 4;
+            this.button1.TabIndex = 5;
             this.button1.Text = "GİRİŞ YAP";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -120,7 +132,7 @@
             this.txtSifre.Name = "txtSifre";
             this.txtSifre.PasswordChar = '*';
             this.txtSifre.Size = new System.Drawing.Size(250, 40);
-            this.txtSifre.TabIndex = 4;
+            this.txtSifre.TabIndex = 2;
             // 
             // txtKullaniciAdi
             // 
@@ -130,17 +142,17 @@
             this.txtKullaniciAdi.Multiline = true;
             this.txtKullaniciAdi.Name = "txtKullaniciAdi";
             this.txtKullaniciAdi.Size = new System.Drawing.Size(250, 40);
-            this.txtKullaniciAdi.TabIndex = 3;
+            this.txtKullaniciAdi.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(347, 222);
+            this.label2.Location = new System.Drawing.Point(320, 199);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(195, 20);
+            this.label2.Size = new System.Drawing.Size(200, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Medical Information System";
             // 
@@ -149,29 +161,17 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(352, 168);
+            this.label1.Location = new System.Drawing.Point(325, 145);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(201, 54);
             this.label1.TabIndex = 3;
             this.label1.Text = "HealNet";
             // 
-            // checkBoxAdmin
-            // 
-            this.checkBoxAdmin.AutoSize = true;
-            this.checkBoxAdmin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBoxAdmin.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.checkBoxAdmin.Location = new System.Drawing.Point(309, 3);
-            this.checkBoxAdmin.Name = "checkBoxAdmin";
-            this.checkBoxAdmin.Size = new System.Drawing.Size(68, 21);
-            this.checkBoxAdmin.TabIndex = 6;
-            this.checkBoxAdmin.Text = "admin";
-            this.checkBoxAdmin.UseVisualStyleBackColor = true;
-            // 
             // Giris
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(110)))), ((int)(((byte)(255)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(882, 753);
             this.Controls.Add(this.label1);
@@ -179,7 +179,6 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Giris";
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Giris";
             this.Load += new System.EventHandler(this.Form1_Load);

@@ -89,9 +89,9 @@ namespace HealNet
 
             var sifreData = await baglanti.GetAsync("Kullanicilar/admin/Sifre");   // Veritabanından Kullanicilar/admin/Sifre klasörü içindeki verileri al
             string sifreDb = sifreData.ResultAs<string>(); // Alınan sonucu stringe çevir
-           
-            
-            if ( kullaniciDb == txtKullaniciAdi.Text && sifreDb == txtSifre.Text)
+
+
+            if (kullaniciDb == txtKullaniciAdi.Text && sifreDb == txtSifre.Text)
             {
                 MessageBox.Show("Ana Ekrana Yönlendiriliyorsunuz", "Giriş Yapıldı", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
@@ -100,14 +100,16 @@ namespace HealNet
                 this.Hide();
 
 
-            } else {               
+            }
+            else
+            {
                 MessageBox.Show("Başarısız", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+
             }
 
-         
 
-            
+
+
         }
 
 
@@ -194,7 +196,7 @@ namespace HealNet
             txtSifre.UseSystemPasswordChar = checkBoxSifreGoster.Checked;
         }
 
-     
+
     }
 }
 
