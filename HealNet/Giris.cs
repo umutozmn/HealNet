@@ -39,24 +39,29 @@ namespace HealNet
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Bağlantıyı ayarlarla beraber oluşturuyoruz
-            baglanti = new FireSharp.FirebaseClient(firebaseAyarlari);
+            // 1. Santralden hattı çekiyoruz
+            var baglanti = FirebaseBaglantisi.BaglantiGetir();
 
+            // 2. Kontrol edip mesajı veriyoruz (Senin istediğin gibi)
             if (baglanti != null)
             {
-                // Bağlantı başarılıysa sessizce devam etsin veya test için mesaj verebilirsin
                 MessageBox.Show("Firebase Bağlantısı Başarılı!");
             }
             else
             {
-                MessageBox.Show("Bağlantı Kurulamadı!");
+                MessageBox.Show("Bağlantı Hatası! İnterneti kontrol et.");
             }
         }
 
 
 
+
+
         private async void button1_Click(object sender, EventArgs e)
         {
+            // Butona basınca tekrar hattı çekiyoruz
+            var baglanti = FirebaseBaglantisi.BaglantiGetir();
+
             if (checkBoxAdmin.Checked == false)
             {
                 MessageBox.Show("Lütfen kullanıcı seçiniz .");
@@ -65,56 +70,41 @@ namespace HealNet
 
 
 
-            if (string.IsNullOrEmpty(txtKullaniciAdi.Text) && string.IsNullOrEmpty(txtSifre.Text)) // Kutular boş mu diye bakıyoruz
+            try
             {
-                MessageBox.Show("Lütfen Kullanıcı Adı ve Şifre giriniz");
-                return;
+                // Veriyi çek
+                var kullaniciData = await baglanti.GetAsync("Kullanicilar/admin/KullaniciAdi");
+
+                if (kullaniciData.Body == "null")
+                {
+                    MessageBox.Show("Kullanıcı Bulunamadı!");
+                    return;
+                }
+
+                string kullaniciDb = kullaniciData.ResultAs<string>();
+
+                var sifreData = await baglanti.GetAsync("Kullanicilar/admin/Sifre");
+                string sifreDb = sifreData.ResultAs<string>();
+
+                if (kullaniciDb == txtKullaniciAdi.Text && sifreDb == txtSifre.Text)
+                {
+                    MessageBox.Show("Giriş Yapıldı", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                    // Ana Ekranı aç
+                    AnaEkran anaEkran = new AnaEkran();
+                    anaEkran.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Hatalı Şifre", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else if (string.IsNullOrEmpty(txtKullaniciAdi.Text))
+            catch (Exception hata)
             {
-                MessageBox.Show("Lütfen Kullanıcı Adı giriniz");
-                return;
+                MessageBox.Show("Hata oluştu: " + hata.Message);
             }
-            else if (string.IsNullOrEmpty(txtSifre.Text))
-            {
-                MessageBox.Show("Lütfen Şifre giriniz");
-                return;
-            }
-
-
-
-            // Doğrulama işlemi
-            var kullaniciData = await baglanti.GetAsync("Kullanicilar/admin/KullaniciAdi"); // Veritabanından Kullanicilar/admin/KullaniciAdi klasörü içindeki verileri al
-            string kullaniciDb = kullaniciData.ResultAs<string>(); // Alınan sonucu stringe çevir
-
-            var sifreData = await baglanti.GetAsync("Kullanicilar/admin/Sifre");   // Veritabanından Kullanicilar/admin/Sifre klasörü içindeki verileri al
-            string sifreDb = sifreData.ResultAs<string>(); // Alınan sonucu stringe çevir
-
-
-            if (kullaniciDb == txtKullaniciAdi.Text && sifreDb == txtSifre.Text)
-            {
-                MessageBox.Show("Ana Ekrana Yönlendiriliyorsunuz", "Giriş Yapıldı", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-
-                AnaEkran anaEkran = new AnaEkran();
-                anaEkran.Show();
-                this.Hide();
-
-
-            }
-            else
-            {
-                MessageBox.Show("Başarısız", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-
-
-
-
         }
-
-
-
-
 
 
 
@@ -196,7 +186,12 @@ namespace HealNet
             txtSifre.UseSystemPasswordChar = checkBoxSifreGoster.Checked;
         }
 
-
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AnaEkran anaEkran = new AnaEkran();
+            anaEkran.Show();
+            this.Hide();
+        }
     }
 }
 

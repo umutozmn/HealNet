@@ -32,8 +32,8 @@
             System.Windows.Forms.Button btnDoktor;
             System.Windows.Forms.Button btnMuayene;
             System.Windows.Forms.Button btnHastaKayit;
-            System.Windows.Forms.Button btnHastaArama;
             System.Windows.Forms.Button btnRandevu;
+            System.Windows.Forms.Button button1;
             this.label1 = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,14 +42,14 @@
             btnDoktor = new System.Windows.Forms.Button();
             btnMuayene = new System.Windows.Forms.Button();
             btnHastaKayit = new System.Windows.Forms.Button();
-            btnHastaArama = new System.Windows.Forms.Button();
             btnRandevu = new System.Windows.Forms.Button();
+            button1 = new System.Windows.Forms.Button();
             this.panelMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCikis
             // 
-            btnCikis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(110)))), ((int)(((byte)(255)))));
+            btnCikis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             btnCikis.Cursor = System.Windows.Forms.Cursors.Hand;
             btnCikis.FlatAppearance.BorderSize = 0;
             btnCikis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -57,7 +57,7 @@
             btnCikis.ForeColor = System.Drawing.Color.White;
             btnCikis.Image = global::HealNet.Properties.Resources.icons8_exit_50;
             btnCikis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnCikis.Location = new System.Drawing.Point(429, 446);
+            btnCikis.Location = new System.Drawing.Point(486, 520);
             btnCikis.Name = "btnCikis";
             btnCikis.Size = new System.Drawing.Size(474, 78);
             btnCikis.TabIndex = 6;
@@ -66,7 +66,7 @@
             // 
             // btnDoktor
             // 
-            btnDoktor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(110)))), ((int)(((byte)(255)))));
+            btnDoktor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             btnDoktor.Cursor = System.Windows.Forms.Cursors.Hand;
             btnDoktor.FlatAppearance.BorderSize = 0;
             btnDoktor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -74,7 +74,7 @@
             btnDoktor.ForeColor = System.Drawing.Color.White;
             btnDoktor.Image = global::HealNet.Properties.Resources.icons8_doctor_64;
             btnDoktor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnDoktor.Location = new System.Drawing.Point(26, 340);
+            btnDoktor.Location = new System.Drawing.Point(26, 324);
             btnDoktor.Name = "btnDoktor";
             btnDoktor.Size = new System.Drawing.Size(333, 78);
             btnDoktor.TabIndex = 4;
@@ -83,7 +83,7 @@
             // 
             // btnMuayene
             // 
-            btnMuayene.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(110)))), ((int)(((byte)(255)))));
+            btnMuayene.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             btnMuayene.Cursor = System.Windows.Forms.Cursors.Hand;
             btnMuayene.FlatAppearance.BorderSize = 0;
             btnMuayene.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -93,7 +93,7 @@
             btnMuayene.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             btnMuayene.Location = new System.Drawing.Point(26, 424);
             btnMuayene.Name = "btnMuayene";
-            btnMuayene.Size = new System.Drawing.Size(333, 122);
+            btnMuayene.Size = new System.Drawing.Size(333, 78);
             btnMuayene.TabIndex = 5;
             btnMuayene.Text = "Muayene/Tedavi Kayıt";
             btnMuayene.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -101,7 +101,7 @@
             // 
             // btnHastaKayit
             // 
-            btnHastaKayit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(110)))), ((int)(((byte)(255)))));
+            btnHastaKayit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             btnHastaKayit.Cursor = System.Windows.Forms.Cursors.Hand;
             btnHastaKayit.FlatAppearance.BorderSize = 0;
             btnHastaKayit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -109,33 +109,17 @@
             btnHastaKayit.ForeColor = System.Drawing.Color.White;
             btnHastaKayit.Image = global::HealNet.Properties.Resources.icons8_user_64;
             btnHastaKayit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnHastaKayit.Location = new System.Drawing.Point(26, 88);
+            btnHastaKayit.Location = new System.Drawing.Point(26, 125);
             btnHastaKayit.Name = "btnHastaKayit";
             btnHastaKayit.Size = new System.Drawing.Size(333, 78);
             btnHastaKayit.TabIndex = 1;
-            btnHastaKayit.Text = "Hasta Kayıt ";
+            btnHastaKayit.Text = "Hasta Yönetimi";
             btnHastaKayit.UseVisualStyleBackColor = false;
-            // 
-            // btnHastaArama
-            // 
-            btnHastaArama.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(110)))), ((int)(((byte)(255)))));
-            btnHastaArama.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnHastaArama.FlatAppearance.BorderSize = 0;
-            btnHastaArama.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnHastaArama.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            btnHastaArama.ForeColor = System.Drawing.Color.White;
-            btnHastaArama.Image = global::HealNet.Properties.Resources.icons8_search_48;
-            btnHastaArama.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnHastaArama.Location = new System.Drawing.Point(26, 172);
-            btnHastaArama.Name = "btnHastaArama";
-            btnHastaArama.Size = new System.Drawing.Size(333, 78);
-            btnHastaArama.TabIndex = 2;
-            btnHastaArama.Text = "Hasta Arama";
-            btnHastaArama.UseVisualStyleBackColor = false;
+            btnHastaKayit.Click += new System.EventHandler(this.btnHastaKayit_Click);
             // 
             // btnRandevu
             // 
-            btnRandevu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(110)))), ((int)(((byte)(255)))));
+            btnRandevu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             btnRandevu.Cursor = System.Windows.Forms.Cursors.Hand;
             btnRandevu.FlatAppearance.BorderSize = 0;
             btnRandevu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -143,7 +127,7 @@
             btnRandevu.ForeColor = System.Drawing.Color.White;
             btnRandevu.Image = global::HealNet.Properties.Resources.icons8_survey_64;
             btnRandevu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnRandevu.Location = new System.Drawing.Point(26, 256);
+            btnRandevu.Location = new System.Drawing.Point(26, 221);
             btnRandevu.Name = "btnRandevu";
             btnRandevu.Size = new System.Drawing.Size(333, 78);
             btnRandevu.TabIndex = 3;
@@ -163,7 +147,7 @@
             // 
             // panelMain
             // 
-            this.panelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(225)))));
+            this.panelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(50)))));
             this.panelMain.Controls.Add(this.label2);
             this.panelMain.Controls.Add(this.panel1);
             this.panelMain.Controls.Add(this.label1);
@@ -171,14 +155,12 @@
             this.panelMain.Controls.Add(btnDoktor);
             this.panelMain.Controls.Add(btnMuayene);
             this.panelMain.Controls.Add(btnHastaKayit);
-            this.panelMain.Controls.Add(btnHastaArama);
             this.panelMain.Controls.Add(btnRandevu);
             this.panelMain.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.panelMain.Location = new System.Drawing.Point(78, 90);
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(975, 614);
             this.panelMain.TabIndex = 7;
-            this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
             // label2
             // 
@@ -193,18 +175,37 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(110)))), ((int)(((byte)(255)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.panel1.Location = new System.Drawing.Point(445, 88);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(474, 172);
+            this.panel1.Size = new System.Drawing.Size(515, 185);
             this.panel1.TabIndex = 7;
+            // 
+            // button1
+            // 
+            button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            button1.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            button1.ForeColor = System.Drawing.Color.White;
+            button1.Image = global::HealNet.Properties.Resources.icons8_exit_50;
+            button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            button1.Location = new System.Drawing.Point(29, 12);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(152, 50);
+            button1.TabIndex = 9;
+            button1.Text = "geri";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // AnaEkran
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(110)))), ((int)(((byte)(255)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(1150, 700);
+            this.Controls.Add(button1);
             this.Controls.Add(this.panelMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AnaEkran";

@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace HealNet
 {
-    public class Hasta: Kisi
+    public  class Hasta: Kisi
     {
 
-        public string Adres { get; set; }
         public string KanGrubu { get; set; }
-        public string Alerjiler { get; set; }
-        public string HastalikGecmisi { get; set; }
+        public string KronikRahatsizliklar { get; set; }
     }
 }
