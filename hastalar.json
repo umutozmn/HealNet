@@ -1,0 +1,304 @@
+{
+  "Hastalar": {
+    "10000000001": {
+      "Ad": "Ahmet",
+      "Soyad": "Yılmaz",
+      "TC": "10000000001",
+      "Telefon": "05551112233",
+      "Cinsiyet": "Erkek",
+      "DogumTarihi": "12.05.1980",
+      "KanGrubu": "A Rh+",
+      "KronikRahatsizliklar": "Yok"
+    },
+    "10000000002": {
+      "Ad": "Ayşe",
+      "Soyad": "Demir",
+      "TC": "10000000002",
+      "Telefon": "05324445566",
+      "Cinsiyet": "Kadın",
+      "DogumTarihi": "23.08.1995",
+      "KanGrubu": "0 Rh-",
+      "KronikRahatsizliklar": "Migren"
+    },
+    "10000000003": {
+      "Ad": "Mehmet",
+      "Soyad": "Öztürk",
+      "TC": "10000000003",
+      "Telefon": "05423339988",
+      "Cinsiyet": "Erkek",
+      "DogumTarihi": "01.01.1975",
+      "KanGrubu": "B Rh+",
+      "KronikRahatsizliklar": "Diyabet"
+    },
+    "10000000004": {
+      "Ad": "Zeynep",
+      "Soyad": "Kaya",
+      "TC": "10000000004",
+      "Telefon": "05051234567",
+      "Cinsiyet": "Kadın",
+      "DogumTarihi": "15.04.1990",
+      "KanGrubu": "AB Rh+",
+      "KronikRahatsizliklar": "Yok"
+    },
+    "10000000005": {
+      "Ad": "Can",
+      "Soyad": "Yıldız",
+      "TC": "10000000005",
+      "Telefon": "05359876543",
+      "Cinsiyet": "Erkek",
+      "DogumTarihi": "10.10.2000",
+      "KanGrubu": "0 Rh+",
+      "KronikRahatsizliklar": "Astım"
+    },
+    "10000000006": {
+      "Ad": "Elif",
+      "Soyad": "Çelik",
+      "TC": "10000000006",
+      "Telefon": "05441112233",
+      "Cinsiyet": "Kadın",
+      "DogumTarihi": "05.05.1985",
+      "KanGrubu": "A Rh-",
+      "KronikRahatsizliklar": "Tansiyon"
+    },
+    "10000000007": {
+      "Ad": "Burak",
+      "Soyad": "Arslan",
+      "TC": "10000000007",
+      "Telefon": "05334445566",
+      "Cinsiyet": "Erkek",
+      "DogumTarihi": "20.11.1992",
+      "KanGrubu": "B Rh-",
+      "KronikRahatsizliklar": "Yok"
+    },
+    "10000000008": {
+      "Ad": "Selin",
+      "Soyad": "Koç",
+      "TC": "10000000008",
+      "Telefon": "05556667788",
+      "Cinsiyet": "Kadın",
+      "DogumTarihi": "14.02.1998",
+      "KanGrubu": "AB Rh-",
+      "KronikRahatsizliklar": "Yok"
+    },
+    "10000000009": {
+      "Ad": "Kemal",
+      "Soyad": "Şahin",
+      "TC": "10000000009",
+      "Telefon": "05429998877",
+      "Cinsiyet": "Erkek",
+      "DogumTarihi": "30.09.1960",
+      "KanGrubu": "0 Rh+",
+      "KronikRahatsizliklar": "Kalp Yetmezliği"
+    },
+    "10000000010": {
+      "Ad": "Merve",
+      "Soyad": "Aydın",
+      "TC": "10000000010",
+      "Telefon": "05321112299",
+      "Cinsiyet": "Kadın",
+      "DogumTarihi": "25.12.1988",
+      "KanGrubu": "A Rh+",
+      "KronikRahatsizliklar": "Yok"
+    },
+    "10000000011": {
+      "Ad": "Emre",
+      "Soyad": "Kurt",
+      "TC": "10000000011",
+      "Telefon": "05067778899",
+      "Cinsiyet": "Erkek",
+      "DogumTarihi": "18.06.1996",
+      "KanGrubu": "B Rh+",
+      "KronikRahatsizliklar": "Yok"
+    },
+    "10000000012": {
+      "Ad": "Derya",
+      "Soyad": "Polat",
+      "TC": "10000000012",
+      "Telefon": "05312223344",
+      "Cinsiyet": "Kadın",
+      "DogumTarihi": "07.03.1983",
+      "KanGrubu": "0 Rh-",
+      "KronikRahatsizliklar": "Anemi"
+    },
+    "10000000013": {
+      "Ad": "Furkan",
+      "Soyad": "Aksoy",
+      "TC": "10000000013",
+      "Telefon": "05460001122",
+      "Cinsiyet": "Erkek",
+      "DogumTarihi": "11.11.2001",
+      "KanGrubu": "A Rh+",
+      "KronikRahatsizliklar": "Yok"
+    },
+    "10000000014": {
+      "Ad": "Hatice",
+      "Soyad": "Güneş",
+      "TC": "10000000014",
+      "Telefon": "05059994422",
+      "Cinsiyet": "Kadın",
+      "DogumTarihi": "09.09.1979",
+      "KanGrubu": "AB Rh+",
+      "KronikRahatsizliklar": "Tiroit"
+    },
+    "10000000015": {
+      "Ad": "Serkan",
+      "Soyad": "Bozkurt",
+      "TC": "10000000015",
+      "Telefon": "05337775544",
+      "Cinsiyet": "Erkek",
+      "DogumTarihi": "22.02.1987",
+      "KanGrubu": "0 Rh+",
+      "KronikRahatsizliklar": "Yok"
+    },
+    "10000000016": {
+      "Ad": "Rabia",
+      "Soyad": "Yavuz",
+      "TC": "10000000016",
+      "Telefon": "05550001234",
+      "Cinsiyet": "Kadın",
+      "DogumTarihi": "04.04.1994",
+      "KanGrubu": "B Rh-",
+      "KronikRahatsizliklar": "Alerji"
+    },
+    "10000000017": {
+      "Ad": "Oğuz",
+      "Soyad": "Erdoğan",
+      "TC": "10000000017",
+      "Telefon": "05443336655",
+      "Cinsiyet": "Erkek",
+      "DogumTarihi": "16.01.1970",
+      "KanGrubu": "A Rh-",
+      "KronikRahatsizliklar": "KOAH"
+    },
+    "10000000018": {
+      "Ad": "Büşra",
+      "Soyad": "Şimşek",
+      "TC": "10000000018",
+      "Telefon": "05062221100",
+      "Cinsiyet": "Kadın",
+      "DogumTarihi": "28.07.2002",
+      "KanGrubu": "AB Rh-",
+      "KronikRahatsizliklar": "Yok"
+    },
+    "10000000019": {
+      "Ad": "Halil",
+      "Soyad": "Toprak",
+      "TC": "10000000019",
+      "Telefon": "05389990011",
+      "Cinsiyet": "Erkek",
+      "DogumTarihi": "13.03.1968",
+      "KanGrubu": "B Rh+",
+      "KronikRahatsizliklar": "Romatizma"
+    },
+    "10000000020": {
+      "Ad": "Esra",
+      "Soyad": "Taş",
+      "TC": "10000000020",
+      "Telefon": "05471112244",
+      "Cinsiyet": "Kadın",
+      "DogumTarihi": "19.09.1999",
+      "KanGrubu": "0 Rh+",
+      "KronikRahatsizliklar": "Yok"
+    },
+    "10000000021": {
+      "Ad": "Kaan",
+      "Soyad": "Sezgin",
+      "TC": "10000000021",
+      "Telefon": "05301239876",
+      "Cinsiyet": "Erkek",
+      "DogumTarihi": "17.07.1991",
+      "KanGrubu": "A Rh+",
+      "KronikRahatsizliklar": "Reflü"
+    },
+    "10000000022": {
+      "Ad": "Nilay",
+      "Soyad": "Erdem",
+      "TC": "10000000022",
+      "Telefon": "05084443322",
+      "Cinsiyet": "Kadın",
+      "DogumTarihi": "02.02.1984",
+      "KanGrubu": "0 Rh-",
+      "KronikRahatsizliklar": "Hipotiroidi"
+    },
+    "10000000023": {
+      "Ad": "Tuna",
+      "Soyad": "Bayraktar",
+      "TC": "10000000023",
+      "Telefon": "05415556677",
+      "Cinsiyet": "Erkek",
+      "DogumTarihi": "29.05.1997",
+      "KanGrubu": "B Rh+",
+      "KronikRahatsizliklar": "Yok"
+    },
+    "10000000024": {
+      "Ad": "İrem",
+      "Soyad": "Akdemir",
+      "TC": "10000000024",
+      "Telefon": "05336669900",
+      "Cinsiyet": "Kadın",
+      "DogumTarihi": "11.11.2003",
+      "KanGrubu": "AB Rh-",
+      "KronikRahatsizliklar": "Çölyak"
+    },
+    "10000000025": {
+      "Ad": "Volkan",
+      "Soyad": "Gürsoy",
+      "TC": "10000000025",
+      "Telefon": "05073334455",
+      "Cinsiyet": "Erkek",
+      "DogumTarihi": "06.06.1976",
+      "KanGrubu": "0 Rh+",
+      "KronikRahatsizliklar": "Bel Fıtığı"
+    },
+    "10000000026": {
+      "Ad": "Ceren",
+      "Soyad": "Uysal",
+      "TC": "10000000026",
+      "Telefon": "05442223311",
+      "Cinsiyet": "Kadın",
+      "DogumTarihi": "08.08.1990",
+      "KanGrubu": "A Rh-",
+      "KronikRahatsizliklar": "Panik Atak"
+    },
+    "10000000027": {
+      "Ad": "Murat",
+      "Soyad": "Önal",
+      "TC": "10000000027",
+      "Telefon": "05391110022",
+      "Cinsiyet": "Erkek",
+      "DogumTarihi": "14.04.1965",
+      "KanGrubu": "B Rh-",
+      "KronikRahatsizliklar": "Gut Hastalığı"
+    },
+    "10000000028": {
+      "Ad": "Aslı",
+      "Soyad": "Karakaya",
+      "TC": "10000000028",
+      "Telefon": "05098887766",
+      "Cinsiyet": "Kadın",
+      "DogumTarihi": "21.01.1996",
+      "KanGrubu": "0 Rh+",
+      "KronikRahatsizliklar": "Yok"
+    },
+    "10000000029": {
+      "Ad": "Eren",
+      "Soyad": "Dinç",
+      "TC": "10000000029",
+      "Telefon": "05428889911",
+      "Cinsiyet": "Erkek",
+      "DogumTarihi": "03.03.1989",
+      "KanGrubu": "AB Rh+",
+      "KronikRahatsizliklar": "Uyku Apnesi"
+    },
+    "10000000030": {
+      "Ad": "Zehra",
+      "Soyad": "Mutlu",
+      "TC": "10000000030",
+      "Telefon": "05370001199",
+      "Cinsiyet": "Kadın",
+      "DogumTarihi": "27.10.2004",
+      "KanGrubu": "A Rh+",
+      "KronikRahatsizliklar": "Demir Eksikliği"
+    }
+  }
+}

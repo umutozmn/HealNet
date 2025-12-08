@@ -68,7 +68,17 @@ namespace HealNet
                 return; // Kod burada durur, aşağıya inmez.
             }
 
+            if (string.IsNullOrWhiteSpace(txtKullaniciAdi.Text))
+            {
+                MessageBox.Show("Lütfen kullanıcı adını giriniz.");
+                return;
+            }
 
+            if (string.IsNullOrWhiteSpace(txtSifre.Text))
+            {
+                MessageBox.Show("Lütfen şifre giriniz.");
+                return;
+            }
 
             try
             {
