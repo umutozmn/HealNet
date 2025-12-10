@@ -45,12 +45,11 @@
             this.comboCinsiyet = new System.Windows.Forms.ComboBox();
             this.comboKanGrubu = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label9 = new System.Windows.Forms.Label();
             this.btnKaydet = new System.Windows.Forms.Button();
             this.dtgHastalar = new System.Windows.Forms.DataGridView();
             this.label10 = new System.Windows.Forms.Label();
             this.btnSil = new System.Windows.Forms.Button();
-            this.btnListele = new System.Windows.Forms.Button();
+            this.btnYenile = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnAra = new System.Windows.Forms.Button();
             this.txtAra = new System.Windows.Forms.TextBox();
@@ -255,18 +254,6 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(210, 27);
             this.dateTimePicker1.TabIndex = 5;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(527, 9);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(254, 45);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "Hasta Yönetimi";
-            // 
             // btnKaydet
             // 
             this.btnKaydet.BackColor = System.Drawing.Color.White;
@@ -285,14 +272,16 @@
             // 
             // dtgHastalar
             // 
-            this.dtgHastalar.BackgroundColor = System.Drawing.Color.White;
+            this.dtgHastalar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(50)))));
+            this.dtgHastalar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgHastalar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgHastalar.Location = new System.Drawing.Point(473, 127);
+            this.dtgHastalar.Location = new System.Drawing.Point(452, 85);
             this.dtgHastalar.Name = "dtgHastalar";
             this.dtgHastalar.RowHeadersWidth = 51;
             this.dtgHastalar.RowTemplate.Height = 24;
-            this.dtgHastalar.Size = new System.Drawing.Size(836, 576);
+            this.dtgHastalar.Size = new System.Drawing.Size(867, 651);
             this.dtgHastalar.TabIndex = 19;
+            this.dtgHastalar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgHastalar_CellClick);
             // 
             // label10
             // 
@@ -320,21 +309,23 @@
             this.btnSil.TabIndex = 21;
             this.btnSil.Text = "SİL";
             this.btnSil.UseVisualStyleBackColor = false;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
-            // btnListele
+            // btnYenile
             // 
-            this.btnListele.BackColor = System.Drawing.Color.White;
-            this.btnListele.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnListele.FlatAppearance.BorderSize = 0;
-            this.btnListele.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnListele.Font = new System.Drawing.Font("Segoe UI Variable Text", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnListele.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(50)))));
-            this.btnListele.Location = new System.Drawing.Point(138, 653);
-            this.btnListele.Name = "btnListele";
-            this.btnListele.Size = new System.Drawing.Size(144, 34);
-            this.btnListele.TabIndex = 22;
-            this.btnListele.Text = "LİSTELE";
-            this.btnListele.UseVisualStyleBackColor = false;
+            this.btnYenile.BackColor = System.Drawing.Color.White;
+            this.btnYenile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnYenile.FlatAppearance.BorderSize = 0;
+            this.btnYenile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnYenile.Font = new System.Drawing.Font("Segoe UI Variable Text", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnYenile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(50)))));
+            this.btnYenile.Location = new System.Drawing.Point(138, 653);
+            this.btnYenile.Name = "btnYenile";
+            this.btnYenile.Size = new System.Drawing.Size(144, 34);
+            this.btnYenile.TabIndex = 22;
+            this.btnYenile.Text = "YENİLE";
+            this.btnYenile.UseVisualStyleBackColor = false;
+            this.btnYenile.Click += new System.EventHandler(this.btnYenile_Click);
             // 
             // groupBox1
             // 
@@ -357,7 +348,7 @@
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(12, 85);
+            this.groupBox1.Location = new System.Drawing.Point(6, 85);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(440, 514);
             this.groupBox1.TabIndex = 23;
@@ -372,7 +363,7 @@
             this.btnAra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAra.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnAra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(50)))));
-            this.btnAra.Location = new System.Drawing.Point(704, 85);
+            this.btnAra.Location = new System.Drawing.Point(695, 25);
             this.btnAra.Name = "btnAra";
             this.btnAra.Size = new System.Drawing.Size(65, 33);
             this.btnAra.TabIndex = 24;
@@ -383,7 +374,7 @@
             // 
             this.txtAra.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtAra.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtAra.Location = new System.Drawing.Point(473, 85);
+            this.txtAra.Location = new System.Drawing.Point(452, 25);
             this.txtAra.Multiline = true;
             this.txtAra.Name = "txtAra";
             this.txtAra.Size = new System.Drawing.Size(225, 33);
@@ -398,13 +389,12 @@
             this.Controls.Add(this.txtAra);
             this.Controls.Add(this.btnAra);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnListele);
+            this.Controls.Add(this.btnYenile);
             this.Controls.Add(this.btnSil);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.dtgHastalar);
             this.Controls.Add(btnGeri);
             this.Controls.Add(this.btnKaydet);
-            this.Controls.Add(this.label9);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "HastaKayit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -436,12 +426,11 @@
         private System.Windows.Forms.ComboBox comboCinsiyet;
         private System.Windows.Forms.ComboBox comboKanGrubu;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnKaydet;
         private System.Windows.Forms.DataGridView dtgHastalar;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnSil;
-        private System.Windows.Forms.Button btnListele;
+        private System.Windows.Forms.Button btnYenile;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnAra;
         private System.Windows.Forms.TextBox txtAra;
