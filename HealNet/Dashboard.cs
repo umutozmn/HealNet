@@ -27,7 +27,7 @@ namespace HealNet
 
         private void btnHastaKayit_Click(object sender, EventArgs e)
         {
-            HastaKayit hastaKayit = new HastaKayit();
+            btnTemizle hastaKayit = new btnTemizle();
             hastaKayit.Show();
             this.Hide();
         }
