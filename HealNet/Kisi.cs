@@ -13,7 +13,6 @@ namespace HealNet
         public string Soyad { get; set; }
         public string Telefon { get; set; }
         public string Cinsiyet { get; set; }
-        public string DogumTarihi { get; set; }
 
     }
 }

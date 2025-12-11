@@ -74,12 +74,13 @@
             btnDoktor.ForeColor = System.Drawing.Color.White;
             btnDoktor.Image = global::HealNet.Properties.Resources.icons8_doctor_64;
             btnDoktor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnDoktor.Location = new System.Drawing.Point(26, 324);
+            btnDoktor.Location = new System.Drawing.Point(26, 223);
             btnDoktor.Name = "btnDoktor";
             btnDoktor.Size = new System.Drawing.Size(333, 78);
             btnDoktor.TabIndex = 4;
             btnDoktor.Text = "Doktor Yönetimi";
             btnDoktor.UseVisualStyleBackColor = false;
+            btnDoktor.Click += new System.EventHandler(this.btnDoktor_Click);
             // 
             // btnMuayene
             // 
@@ -127,12 +128,30 @@
             btnRandevu.ForeColor = System.Drawing.Color.White;
             btnRandevu.Image = global::HealNet.Properties.Resources.icons8_survey_64;
             btnRandevu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnRandevu.Location = new System.Drawing.Point(26, 221);
+            btnRandevu.Location = new System.Drawing.Point(26, 321);
             btnRandevu.Name = "btnRandevu";
             btnRandevu.Size = new System.Drawing.Size(333, 78);
             btnRandevu.TabIndex = 3;
             btnRandevu.Text = "Randevu Yönetimi";
             btnRandevu.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            button1.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            button1.ForeColor = System.Drawing.Color.White;
+            button1.Image = global::HealNet.Properties.Resources.icons8_exit_50;
+            button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            button1.Location = new System.Drawing.Point(29, 12);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(152, 50);
+            button1.TabIndex = 9;
+            button1.Text = "geri";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -181,24 +200,6 @@
             this.panel1.Size = new System.Drawing.Size(515, 185);
             this.panel1.TabIndex = 7;
             // 
-            // button1
-            // 
-            button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            button1.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            button1.ForeColor = System.Drawing.Color.White;
-            button1.Image = global::HealNet.Properties.Resources.icons8_exit_50;
-            button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            button1.Location = new System.Drawing.Point(29, 12);
-            button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(152, 50);
-            button1.TabIndex = 9;
-            button1.Text = "geri";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // AnaEkran
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -211,7 +212,6 @@
             this.Name = "AnaEkran";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ana Menü";
-            this.Load += new System.EventHandler(this.AnaEkran_Load);
             this.panelMain.ResumeLayout(false);
             this.ResumeLayout(false);
 

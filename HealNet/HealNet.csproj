@@ -80,6 +80,12 @@
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Doktor.cs" />
+    <Compile Include="DoktorYönetim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoktorYönetim.Designer.cs">
+      <DependentUpon>DoktorYönetim.cs</DependentUpon>
+    </Compile>
     <Compile Include="FirebaseBaglantisi.cs" />
     <Compile Include="Giris.cs">
       <SubType>Form</SubType>
@@ -100,6 +106,9 @@
     <Compile Include="Randevu.cs" />
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoktorYönetim.resx">
+      <DependentUpon>DoktorYönetim.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Giris.resx">
       <DependentUpon>Giris.cs</DependentUpon>

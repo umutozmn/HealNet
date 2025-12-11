@@ -19,9 +19,6 @@ namespace HealNet
         }
 
 
-        private void AnaEkran_Load(object sender, EventArgs e)
-        {
-        }
 
        
 
@@ -38,6 +35,13 @@ namespace HealNet
             giris.Show();
             this.Hide();
 
+        }
+
+        private void btnDoktor_Click(object sender, EventArgs e)
+        {
+            DoktorYönetim doc = new DoktorYönetim();
+            doc.Show();
+            this.Hide();
         }
     }
 }

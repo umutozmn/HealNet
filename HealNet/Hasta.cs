@@ -11,5 +11,7 @@ namespace HealNet
 
         public string KanGrubu { get; set; }
         public string KronikRahatsizliklar { get; set; }
+        public string DogumTarihi { get; set; }
+
     }
 }
