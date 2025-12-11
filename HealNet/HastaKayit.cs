@@ -43,7 +43,7 @@ namespace HealNet
             dtgHastalar.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
             dtgHastalar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            // Form açılır açılmaz verileri çek
+            // Form açılır açılmaz veriler ekrana gelicek 
             btnYenile.PerformClick();
         }
 
@@ -68,9 +68,10 @@ namespace HealNet
             txtTC.Focus(); // İmleci başa al
         }
 
-        // ============================================================
+
+       
         // 4. BÖLÜM: VERİ ÇEKME (READ) İŞLEMLERİ
-        // ============================================================
+       
 
         private async void btnYenile_Click(object sender, EventArgs e)
         {
@@ -81,12 +82,14 @@ namespace HealNet
 
             if (cevap.Body != "null")
             {
+
+                // Firebase'den gelen verileri tanımladık
                 var gelenVeriler = cevap.ResultAs<Dictionary<string, Hasta>>();
 
-                // 1. Verileri Hafızaya (Listeye) al
+                // 1. Tanımlanan verileri hafızaya aldık
                 hafizadakiHastalar = gelenVeriler.Values.ToList();
 
-                // 2. Tabloyu doldur
+                // 2. Tabloyu doldurduk bu hafızadaki verilerle
                 dtgHastalar.DataSource = hafizadakiHastalar;
 
                 // Sütun sırasını ayarla
@@ -97,7 +100,7 @@ namespace HealNet
             else
             {
                 dtgHastalar.DataSource = null;
-                hafizadakiHastalar.Clear();
+                hafizadakiHastalar.Clear(); // Eğer silinmezse eski veriler kalır
             }
         }
 
@@ -109,27 +112,29 @@ namespace HealNet
         {
             var baglanti = FirebaseBaglantisi.BaglantiGetir();
 
-            // A) Zorunlu Alan Kontrolü
+            // Kullanıcı zorunlu alanları girmek zorunda
             if (string.IsNullOrEmpty(txtTC.Text) || string.IsNullOrEmpty(txtAd.Text) ||
                 string.IsNullOrEmpty(txtSoyad.Text) || string.IsNullOrEmpty(txtTelefon.Text) ||
                 string.IsNullOrEmpty(comboCinsiyet.Text) || string.IsNullOrEmpty(comboKanGrubu.Text))
             {
                 MessageBox.Show("Lütfen zorunlu alanları doldurun.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                return; // Bu zorunlu alanlar doldurulmazsa işlemi sonlandır, ilerlemesin
             }
 
-            // B) Kronik Hastalık Boşsa "Yok" Yaz
+
+            // B) Kronik Hastalık Boşsa Otomatik "Yok" Yaz
             if (string.IsNullOrEmpty(txtKronik.Text))
             {
                 txtKronik.Text = "Yok";
             }
 
+
             // C) Aynı TC var mı kontrolü
             var kontrolCevap = await baglanti.GetAsync("Hastalar/" + txtTC.Text);
             if (kontrolCevap.Body != "null")
             {
-                MessageBox.Show("Bu TC ile zaten bir kayıt var!", "Çakışma Hatası", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                return;
+                MessageBox.Show("Bu TC numarasıyla sisteme daha önce kayıt yapılmış. Lütfen kontrol ediniz.", "Çakışma Hatası", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return; // Aynı TC ile kayıt yapılmaya çalışılırsa işlemi sonlandır, ilerlemesin
             }
 
             // D) Nesne Oluşturma ve Veri Doldurma
@@ -148,30 +153,32 @@ namespace HealNet
             yeniHasta.KronikRahatsizliklar = txtKronik.Text;
 
             // E) Firebase'e Gönder
-            await baglanti.SetAsync("Hastalar/" + txtTC.Text, yeniHasta);
+            await baglanti.SetAsync("Hastalar/" + txtTC.Text, yeniHasta); // Hastalar klasörü altında TC klasörü açılır ve altına yeniHasta kayıtları gelir
 
             MessageBox.Show("Hasta kaydedildi.");
 
             // F) Temizlik ve Yenileme
-            btnYenile.PerformClick(); // Listeyi güncelle
+            btnYenile.PerformClick(); // Yenile butonunda yaptığımız işlemi çalıştırarak listeyi günceller
             AlanlariTemizle();        // Kutuları temizle
         }
 
+
+
         private async void btnSil_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtTC.Text))
+            if (string.IsNullOrEmpty(txtTC.Text)) // Kullanıcı hiçbir hasta seçmemişse zaten TC kutusu boş olur yani kontrolü oradan yapıyoruz.
             {
                 MessageBox.Show("Lütfen silinecek hastayı listeden seçiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                return; // Seçilmezse işlemi sonlandır, ilerlemesin
             }
 
             var secim = MessageBox.Show(txtAd.Text + " " + txtSoyad.Text + " kişisini silmek istiyor musunuz?", "Silme Onayı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (secim == DialogResult.Yes)
+            if (secim == DialogResult.Yes)  // MessageBoxButtons.YesNo ile çalışan bir komuttur. Evet mi denmiş diye kontrol ediyoruz.
             {
-                var baglanti = FirebaseBaglantisi.BaglantiGetir();
+                var baglanti = FirebaseBaglantisi.BaglantiGetir(); 
 
-                await baglanti.DeleteAsync("Hastalar/" + txtTC.Text);
+                await baglanti.DeleteAsync("Hastalar/" + txtTC.Text); // Silme işlemi TC numarasına göre yapılır.
 
                 MessageBox.Show("Kayıt silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -180,14 +187,13 @@ namespace HealNet
             }
         }
 
-        // ============================================================
-        // 6. BÖLÜM: ARAYÜZ OLAYLARI (ARAMA, SEÇME, NAVİGASYON)
-        // ============================================================
+
+              
 
         // Tablodan birine tıklayınca kutuları doldur
         private void dtgHastalar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (e.RowIndex >= 0) // 0'dan büyükse (başlık satırına tıklanmadıysa) bir satıra tıklanmıştır zaten
             {
                 var satir = dtgHastalar.Rows[e.RowIndex];
 
@@ -205,6 +211,8 @@ namespace HealNet
                 }
             }
         }
+
+
 
         // Canlı Arama (Yazarken filtrele)
         private void txtAra_TextChanged(object sender, EventArgs e)
