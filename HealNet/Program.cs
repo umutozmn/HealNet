@@ -16,7 +16,7 @@ namespace HealNet
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new btnTemizle());
+            Application.Run(new Giris());
         }
     }
 }

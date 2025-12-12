@@ -116,7 +116,7 @@ namespace HealNet
 
             // E) Bilgi Ver
             double ucret = yeniDoktor.MuayeneUcretiHesapla();
-            MessageBox.Show($"Doktor Kaydedildi.\nHesaplanan Muayene Ücreti: {ucret} TL");
+            MessageBox.Show($"Doktor Kaydedildi.");
 
             // F) Temizle
             btnYenile.PerformClick();
@@ -125,10 +125,40 @@ namespace HealNet
 
         }
 
+        // Ekrandaki kutuları temizleyen ve sıfırlayan metot
+        private void AlanlariTemizle()
+        {
+            txtTC.Clear();
+            txtAd.Clear();
+            txtSoyad.Clear();
+            txtTelefon.Clear();
+            txtDeneyim.Clear();
+            txtCalismaSaatleri.Clear();
 
+            comboCinsiyet.SelectedIndex = -1;
+            comboBrans.SelectedIndex = -1;
+            comboUnvan.SelectedIndex = -1;
+
+            dtgDoktorlar.ClearSelection();
+            txtTC.Focus();
+        }
+
+        private void btnTemizle_Click_1(object sender, EventArgs e)
+        {
+            AlanlariTemizle();
+        }
 
         private void comboBrans_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+            // Eğer kullanıcı seçimi kaldırdıysa (Temizle'ye bastıysa)
+            if (comboBrans.SelectedIndex == -1)
+            {
+                txtCalismaSaatleri.Clear(); // Saati temizle
+                return; // Ve aşağıya inme, metodu burada bitir.
+            }
+
+
+
             switch (comboBrans.Text)
             {
                 case "Dahiliye":
@@ -173,23 +203,7 @@ namespace HealNet
 
 
 
-        // Ekrandaki kutuları temizleyen ve sıfırlayan metot
-        private void AlanlariTemizle()
-        {
-            txtTC.Clear();
-            txtAd.Clear();
-            txtSoyad.Clear();
-            txtTelefon.Clear();
-            txtDeneyim.Clear();
-            txtCalismaSaatleri.Clear();
 
-            comboCinsiyet.SelectedIndex = -1;
-            comboBrans.SelectedIndex = -1;
-            comboUnvan.SelectedIndex = -1;
-
-            dtgDoktorlar.ClearSelection();
-            txtTC.Focus();
-        }
 
         private void btnGeri_Click(object sender, EventArgs e)
         {
@@ -200,11 +214,7 @@ namespace HealNet
         }
 
 
-        // 8. TEMİZLE BUTONU
-        private void btnTemizle_Click(object sender, EventArgs e)
-        {
-            AlanlariTemizle();
-        }
+
 
         private async void btnSil_Click(object sender, EventArgs e)
         {
@@ -241,11 +251,20 @@ namespace HealNet
                 comboCinsiyet.Text = satir.Cells["Cinsiyet"].Value.ToString();
                 comboBrans.Text = satir.Cells["Brans"].Value.ToString();
                 comboUnvan.Text = satir.Cells["Unvan"].Value.ToString();
-                txtDeneyim.Text = satir.Cells["Deneyim Yılı"].Value.ToString();
-                txtCalismaSaatleri.Text = satir.Cells["Çalışma Saatleri"].Value.ToString();
-
+                txtDeneyim.Text = satir.Cells["DeneyimYili"].Value.ToString();
+                txtCalismaSaatleri.Text = satir.Cells["CalismaSaatleri"].Value.ToString();
 
             }
+        }
+
+        private void txtAra_TextChanged(object sender, EventArgs e)
+        {
+            string aranan = txtAra.Text.ToLower();
+
+            var filtrelenenListe = hafizadakiDoktorlar
+                .Where(x => x.Ad.ToLower().Contains(aranan) || x.Soyad.ToLower().Contains(aranan) ||  x.TC.Contains(aranan)) .ToList();
+
+            dtgDoktorlar.DataSource = filtrelenenListe;
         }
     }
 }

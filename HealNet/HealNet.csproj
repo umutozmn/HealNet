@@ -73,11 +73,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dashboard.cs">
+    <Compile Include="AnaEkran.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dashboard.Designer.cs">
-      <DependentUpon>Dashboard.cs</DependentUpon>
+    <Compile Include="AnaEkran.Designer.cs">
+      <DependentUpon>AnaEkran.cs</DependentUpon>
     </Compile>
     <Compile Include="Doktor.cs" />
     <Compile Include="DoktorYönetim.cs">
@@ -104,8 +104,14 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Randevu.cs" />
-    <EmbeddedResource Include="Dashboard.resx">
-      <DependentUpon>Dashboard.cs</DependentUpon>
+    <Compile Include="RandevuYonetimi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RandevuYonetimi.Designer.cs">
+      <DependentUpon>RandevuYonetimi.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AnaEkran.resx">
+      <DependentUpon>AnaEkran.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DoktorYönetim.resx">
       <DependentUpon>DoktorYönetim.cs</DependentUpon>
@@ -126,6 +132,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RandevuYonetimi.resx">
+      <DependentUpon>RandevuYonetimi.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

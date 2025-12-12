@@ -30,21 +30,21 @@
         {
             System.Windows.Forms.Button btnCikis;
             System.Windows.Forms.Button btnDoktor;
-            System.Windows.Forms.Button btnMuayene;
             System.Windows.Forms.Button btnHastaKayit;
             System.Windows.Forms.Button btnRandevu;
-            System.Windows.Forms.Button button1;
             this.label1 = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblRandevuSayisi = new System.Windows.Forms.Label();
+            this.lblDoktorSayisi = new System.Windows.Forms.Label();
+            this.lblHastaSayisi = new System.Windows.Forms.Label();
             btnCikis = new System.Windows.Forms.Button();
             btnDoktor = new System.Windows.Forms.Button();
-            btnMuayene = new System.Windows.Forms.Button();
             btnHastaKayit = new System.Windows.Forms.Button();
             btnRandevu = new System.Windows.Forms.Button();
-            button1 = new System.Windows.Forms.Button();
             this.panelMain.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCikis
@@ -74,31 +74,13 @@
             btnDoktor.ForeColor = System.Drawing.Color.White;
             btnDoktor.Image = global::HealNet.Properties.Resources.icons8_doctor_64;
             btnDoktor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnDoktor.Location = new System.Drawing.Point(26, 223);
+            btnDoktor.Location = new System.Drawing.Point(26, 280);
             btnDoktor.Name = "btnDoktor";
             btnDoktor.Size = new System.Drawing.Size(333, 78);
             btnDoktor.TabIndex = 4;
             btnDoktor.Text = "Doktor Yönetimi";
             btnDoktor.UseVisualStyleBackColor = false;
             btnDoktor.Click += new System.EventHandler(this.btnDoktor_Click);
-            // 
-            // btnMuayene
-            // 
-            btnMuayene.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            btnMuayene.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnMuayene.FlatAppearance.BorderSize = 0;
-            btnMuayene.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnMuayene.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            btnMuayene.ForeColor = System.Drawing.Color.White;
-            btnMuayene.Image = global::HealNet.Properties.Resources.icons8_list_64;
-            btnMuayene.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnMuayene.Location = new System.Drawing.Point(26, 424);
-            btnMuayene.Name = "btnMuayene";
-            btnMuayene.Size = new System.Drawing.Size(333, 78);
-            btnMuayene.TabIndex = 5;
-            btnMuayene.Text = "Muayene/Tedavi Kayıt";
-            btnMuayene.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            btnMuayene.UseVisualStyleBackColor = false;
             // 
             // btnHastaKayit
             // 
@@ -110,7 +92,7 @@
             btnHastaKayit.ForeColor = System.Drawing.Color.White;
             btnHastaKayit.Image = global::HealNet.Properties.Resources.icons8_user_64;
             btnHastaKayit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnHastaKayit.Location = new System.Drawing.Point(26, 125);
+            btnHastaKayit.Location = new System.Drawing.Point(26, 143);
             btnHastaKayit.Name = "btnHastaKayit";
             btnHastaKayit.Size = new System.Drawing.Size(333, 78);
             btnHastaKayit.TabIndex = 1;
@@ -128,30 +110,13 @@
             btnRandevu.ForeColor = System.Drawing.Color.White;
             btnRandevu.Image = global::HealNet.Properties.Resources.icons8_survey_64;
             btnRandevu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnRandevu.Location = new System.Drawing.Point(26, 321);
+            btnRandevu.Location = new System.Drawing.Point(26, 429);
             btnRandevu.Name = "btnRandevu";
             btnRandevu.Size = new System.Drawing.Size(333, 78);
             btnRandevu.TabIndex = 3;
             btnRandevu.Text = "Randevu Yönetimi";
             btnRandevu.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            button1.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            button1.ForeColor = System.Drawing.Color.White;
-            button1.Image = global::HealNet.Properties.Resources.icons8_exit_50;
-            button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            button1.Location = new System.Drawing.Point(29, 12);
-            button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(152, 50);
-            button1.TabIndex = 9;
-            button1.Text = "geri";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += new System.EventHandler(this.button1_Click);
+            btnRandevu.Click += new System.EventHandler(this.btnRandevu_Click);
             // 
             // label1
             // 
@@ -172,7 +137,6 @@
             this.panelMain.Controls.Add(this.label1);
             this.panelMain.Controls.Add(btnCikis);
             this.panelMain.Controls.Add(btnDoktor);
-            this.panelMain.Controls.Add(btnMuayene);
             this.panelMain.Controls.Add(btnHastaKayit);
             this.panelMain.Controls.Add(btnRandevu);
             this.panelMain.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -188,17 +152,53 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(435, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(280, 61);
+            this.label2.Size = new System.Drawing.Size(537, 61);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Dashboard";
+            this.label2.Text = "Genel Bakış";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.panel1.Controls.Add(this.lblRandevuSayisi);
+            this.panel1.Controls.Add(this.lblDoktorSayisi);
+            this.panel1.Controls.Add(this.lblHastaSayisi);
             this.panel1.Location = new System.Drawing.Point(445, 88);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(515, 185);
             this.panel1.TabIndex = 7;
+            // 
+            // lblRandevuSayisi
+            // 
+            this.lblRandevuSayisi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.lblRandevuSayisi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRandevuSayisi.Font = new System.Drawing.Font("Segoe UI Variable Text", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblRandevuSayisi.ForeColor = System.Drawing.Color.White;
+            this.lblRandevuSayisi.Location = new System.Drawing.Point(31, 128);
+            this.lblRandevuSayisi.Name = "lblRandevuSayisi";
+            this.lblRandevuSayisi.Size = new System.Drawing.Size(458, 43);
+            this.lblRandevuSayisi.TabIndex = 11;
+            // 
+            // lblDoktorSayisi
+            // 
+            this.lblDoktorSayisi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.lblDoktorSayisi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblDoktorSayisi.Font = new System.Drawing.Font("Segoe UI Variable Text", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblDoktorSayisi.ForeColor = System.Drawing.Color.White;
+            this.lblDoktorSayisi.Location = new System.Drawing.Point(31, 73);
+            this.lblDoktorSayisi.Name = "lblDoktorSayisi";
+            this.lblDoktorSayisi.Size = new System.Drawing.Size(458, 38);
+            this.lblDoktorSayisi.TabIndex = 10;
+            // 
+            // lblHastaSayisi
+            // 
+            this.lblHastaSayisi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.lblHastaSayisi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblHastaSayisi.Font = new System.Drawing.Font("Segoe UI Variable Text", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblHastaSayisi.ForeColor = System.Drawing.Color.White;
+            this.lblHastaSayisi.Location = new System.Drawing.Point(31, 15);
+            this.lblHastaSayisi.Name = "lblHastaSayisi";
+            this.lblHastaSayisi.Size = new System.Drawing.Size(458, 37);
+            this.lblHastaSayisi.TabIndex = 9;
             // 
             // AnaEkran
             // 
@@ -206,13 +206,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(1150, 700);
-            this.Controls.Add(button1);
             this.Controls.Add(this.panelMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AnaEkran";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ana Menü";
+            this.Load += new System.EventHandler(this.AnaEkran_Load);
             this.panelMain.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -223,5 +224,8 @@
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblRandevuSayisi;
+        private System.Windows.Forms.Label lblDoktorSayisi;
+        private System.Windows.Forms.Label lblHastaSayisi;
     }
 }

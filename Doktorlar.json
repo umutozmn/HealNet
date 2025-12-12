@@ -5,10 +5,10 @@
     "TC": "21000000001",
     "Telefon": "05310001001",
     "Cinsiyet": "Erkek",
-    "Branş": "Dahiliye",
+    "Brans": "Dahiliye",
     "Unvan": "Uzman Doktor",
-    "Deneyim Yılı": 12,
-    "Çalışma Saatleri": "09:00 - 17:00"
+    "DeneyimYili": 12,
+    "CalismaSaatleri": "09:00 - 17:00"
   },
   "21000000002": {
     "Ad": "Ahmet",
@@ -16,10 +16,10 @@
     "TC": "21000000002",
     "Telefon": "05420002002",
     "Cinsiyet": "Erkek",
-    "Branş": "Dahiliye",
+    "Brans": "Dahiliye",
     "Unvan": "Pratisyen Hekim",
-    "Deneyim Yılı": 3,
-    "Çalışma Saatleri": "09:00 - 17:00"
+    "DeneyimYili": 3,
+    "CalismaSaatleri": "09:00 - 17:00"
   },
 
   "21000000003": {
@@ -28,10 +28,10 @@
     "TC": "21000000003",
     "Telefon": "05530003003",
     "Cinsiyet": "Erkek",
-    "Branş": "Kardiyoloji",
+    "Brans": "Kardiyoloji",
     "Unvan": "Doçent Doktor",
-    "Deneyim Yılı": 15,
-    "Çalışma Saatleri": "08:30 - 16:30"
+    "DeneyimYili": 15,
+    "CalismaSaatleri": "08:30 - 16:30"
   },
   "21000000004": {
     "Ad": "Serkan",
@@ -39,10 +39,10 @@
     "TC": "21000000004",
     "Telefon": "05060004004",
     "Cinsiyet": "Erkek",
-    "Branş": "Kardiyoloji",
+    "Brans": "Kardiyoloji",
     "Unvan": "Uzman Doktor",
-    "Deneyim Yılı": 9,
-    "Çalışma Saatleri": "08:30 - 16:30"
+    "DeneyimYili": 9,
+    "CalismaSaatleri": "08:30 - 16:30"
   },
 
   "21000000005": {
@@ -51,10 +51,10 @@
     "TC": "21000000005",
     "Telefon": "05390005005",
     "Cinsiyet": "Erkek",
-    "Branş": "Göğüs Hastalıkları",
+    "Brans": "Göğüs Hastalıkları",
     "Unvan": "Uzman Doktor",
-    "Deneyim Yılı": 11,
-    "Çalışma Saatleri": "08:00 - 16:00"
+    "DeneyimYili": 11,
+    "CalismaSaatleri": "08:00 - 16:00"
   },
   "21000000006": {
     "Ad": "Hakan",
@@ -62,10 +62,10 @@
     "TC": "21000000006",
     "Telefon": "05470006006",
     "Cinsiyet": "Erkek",
-    "Branş": "Göğüs Hastalıkları",
+    "Brans": "Göğüs Hastalıkları",
     "Unvan": "Pratisyen Hekim",
-    "Deneyim Yılı": 4,
-    "Çalışma Saatleri": "08:00 - 16:00"
+    "DeneyimYili": 4,
+    "CalismaSaatleri": "08:00 - 16:00"
   },
 
   "21000000007": {
@@ -74,10 +74,10 @@
     "TC": "21000000007",
     "Telefon": "05520007007",
     "Cinsiyet": "Erkek",
-    "Branş": "Kulak, Burun, Boğaz (KBB)",
+    "Brans": "Kulak, Burun, Boğaz (KBB)",
     "Unvan": "Uzman Doktor",
-    "Deneyim Yılı": 10,
-    "Çalışma Saatleri": "09:00 - 17:00"
+    "DeneyimYili": 10,
+    "CalismaSaatleri": "09:00 - 17:00"
   },
   "21000000008": {
     "Ad": "Onur",
@@ -85,10 +85,10 @@
     "TC": "21000000008",
     "Telefon": "05310008008",
     "Cinsiyet": "Erkek",
-    "Branş": "Kulak, Burun, Boğaz (KBB)",
+    "Brans": "Kulak, Burun, Boğaz (KBB)",
     "Unvan": "Doçent Doktor",
-    "Deneyim Yılı": 14,
-    "Çalışma Saatleri": "09:00 - 17:00"
+    "DeneyimYili": 14,
+    "CalismaSaatleri": "09:00 - 17:00"
   },
 
   "21000000009": {
@@ -97,10 +97,10 @@
     "TC": "21000000009",
     "Telefon": "05490009009",
     "Cinsiyet": "Erkek",
-    "Branş": "Nöroloji",
+    "Brans": "Nöroloji",
     "Unvan": "Uzman Doktor",
-    "Deneyim Yılı": 12,
-    "Çalışma Saatleri": "09:30 - 17:30"
+    "DeneyimYili": 12,
+    "CalismaSaatleri": "09:30 - 17:30"
   },
   "21000000010": {
     "Ad": "Furkan",
@@ -108,10 +108,10 @@
     "TC": "21000000010",
     "Telefon": "05580010010",
     "Cinsiyet": "Erkek",
-    "Branş": "Nöroloji",
+    "Brans": "Nöroloji",
     "Unvan": "Profesör Doktor",
-    "Deneyim Yılı": 18,
-    "Çalışma Saatleri": "09:30 - 17:30"
+    "DeneyimYili": 18,
+    "CalismaSaatleri": "09:30 - 17:30"
   },
 
   "21000000011": {
@@ -120,10 +120,10 @@
     "TC": "21000000011",
     "Telefon": "05340011011",
     "Cinsiyet": "Erkek",
-    "Branş": "Ortopedi",
+    "Brans": "Ortopedi",
     "Unvan": "Uzman Doktor",
-    "Deneyim Yılı": 10,
-    "Çalışma Saatleri": "08:00 - 16:00"
+    "DeneyimYili": 10,
+    "CalismaSaatleri": "08:00 - 16:00"
   },
   "21000000012": {
     "Ad": "Harun",
@@ -131,10 +131,10 @@
     "TC": "21000000012",
     "Telefon": "05430012012",
     "Cinsiyet": "Erkek",
-    "Branş": "Ortopedi",
+    "Brans": "Ortopedi",
     "Unvan": "Pratisyen Hekim",
-    "Deneyim Yılı": 3,
-    "Çalışma Saatleri": "08:00 - 16:00"
+    "DeneyimYili": 3,
+    "CalismaSaatleri": "08:00 - 16:00"
   },
 
   "21000000013": {
@@ -143,10 +143,10 @@
     "TC": "21000000013",
     "Telefon": "05550013013",
     "Cinsiyet": "Erkek",
-    "Branş": "Dermatoloji",
+    "Brans": "Dermatoloji",
     "Unvan": "Uzman Doktor",
-    "Deneyim Yılı": 8,
-    "Çalışma Saatleri": "10:00 - 18:00"
+    "DeneyimYili": 8,
+    "CalismaSaatleri": "10:00 - 18:00"
   },
   "21000000014": {
     "Ad": "Okan",
@@ -154,10 +154,10 @@
     "TC": "21000000014",
     "Telefon": "05370014014",
     "Cinsiyet": "Erkek",
-    "Branş": "Dermatoloji",
+    "Brans": "Dermatoloji",
     "Unvan": "Pratisyen Hekim",
-    "Deneyim Yılı": 2,
-    "Çalışma Saatleri": "10:00 - 18:00"
+    "DeneyimYili": 2,
+    "CalismaSaatleri": "10:00 - 18:00"
   },
 
   "21000000015": {
@@ -166,10 +166,10 @@
     "TC": "21000000015",
     "Telefon": "05560015015",
     "Cinsiyet": "Erkek",
-    "Branş": "Üroloji",
+    "Brans": "Üroloji",
     "Unvan": "Doçent Doktor",
-    "Deneyim Yılı": 13,
-    "Çalışma Saatleri": "08:30 - 16:30"
+    "DeneyimYili": 13,
+    "CalismaSaatleri": "08:30 - 16:30"
   },
   "21000000016": {
     "Ad": "Samet",
@@ -177,10 +177,10 @@
     "TC": "21000000016",
     "Telefon": "05320016016",
     "Cinsiyet": "Erkek",
-    "Branş": "Üroloji",
+    "Brans": "Üroloji",
     "Unvan": "Uzman Doktor",
-    "Deneyim Yılı": 9,
-    "Çalışma Saatleri": "08:30 - 16:30"
+    "DeneyimYili": 9,
+    "CalismaSaatleri": "08:30 - 16:30"
   },
 
   "21000000017": {
@@ -189,10 +189,10 @@
     "TC": "21000000017",
     "Telefon": "05480017017",
     "Cinsiyet": "Erkek",
-    "Branş": "Genel Cerrahi",
+    "Brans": "Genel Cerrahi",
     "Unvan": "Uzman Doktor",
-    "Deneyim Yılı": 11,
-    "Çalışma Saatleri": "08:00 - 16:00"
+    "DeneyimYili": 11,
+    "CalismaSaatleri": "08:00 - 16:00"
   },
   "21000000018": {
     "Ad": "Levent",
@@ -200,10 +200,10 @@
     "TC": "21000000018",
     "Telefon": "05590018018",
     "Cinsiyet": "Erkek",
-    "Branş": "Genel Cerrahi",
+    "Brans": "Genel Cerrahi",
     "Unvan": "Pratisyen Hekim",
-    "Deneyim Yılı": 4,
-    "Çalışma Saatleri": "08:00 - 16:00"
+    "DeneyimYili": 4,
+    "CalismaSaatleri": "08:00 - 16:00"
   },
 
   "21000000019": {
@@ -212,10 +212,10 @@
     "TC": "21000000019",
     "Telefon": "05350019019",
     "Cinsiyet": "Erkek",
-    "Branş": "Aile Hekimliği",
+    "Brans": "Aile Hekimliği",
     "Unvan": "Pratisyen Hekim",
-    "Deneyim Yılı": 3,
-    "Çalışma Saatleri": "08:30 - 17:00"
+    "DeneyimYili": 3,
+    "CalismaSaatleri": "08:30 - 17:00"
   },
   "21000000020": {
     "Ad": "Onur",
@@ -223,10 +223,10 @@
     "TC": "21000000020",
     "Telefon": "05460020020",
     "Cinsiyet": "Erkek",
-    "Branş": "Aile Hekimliği",
+    "Brans": "Aile Hekimliği",
     "Unvan": "Uzman Doktor",
-    "Deneyim Yılı": 7,
-    "Çalışma Saatleri": "08:30 - 17:00"
+    "DeneyimYili": 7,
+    "CalismaSaatleri": "08:30 - 17:00"
   },
 
   "21000000021": {
@@ -235,10 +235,10 @@
     "TC": "21000000021",
     "Telefon": "05540021021",
     "Cinsiyet": "Erkek",
-    "Branş": "Psikiyatri",
+    "Brans": "Psikiyatri",
     "Unvan": "Doçent Doktor",
-    "Deneyim Yılı": 14,
-    "Çalışma Saatleri": "10:00 - 18:00"
+    "DeneyimYili": 14,
+    "CalismaSaatleri": "10:00 - 18:00"
   },
   "21000000022": {
     "Ad": "Volkan",
@@ -246,10 +246,10 @@
     "TC": "21000000022",
     "Telefon": "05390022022",
     "Cinsiyet": "Erkek",
-    "Branş": "Psikiyatri",
+    "Brans": "Psikiyatri",
     "Unvan": "Uzman Doktor",
-    "Deneyim Yılı": 8,
-    "Çalışma Saatleri": "10:00 - 18:00"
+    "DeneyimYili": 8,
+    "CalismaSaatleri": "10:00 - 18:00"
   },
 
   "21000000023": {
@@ -258,10 +258,10 @@
     "TC": "21000000023",
     "Telefon": "05470023023",
     "Cinsiyet": "Kadın",
-    "Branş": "Fizik Tedavi ve Rehabilitasyon",
+    "Brans": "Fizik Tedavi ve Rehabilitasyon",
     "Unvan": "Uzman Doktor",
-    "Deneyim Yılı": 9,
-    "Çalışma Saatleri": "09:00 - 17:00"
+    "DeneyimYili": 9,
+    "CalismaSaatleri": "09:00 - 17:00"
   },
   "21000000024": {
     "Ad": "Elif",
@@ -269,10 +269,10 @@
     "TC": "21000000024",
     "Telefon": "05320024024",
     "Cinsiyet": "Kadın",
-    "Branş": "Fizik Tedavi ve Rehabilitasyon",
+    "Brans": "Fizik Tedavi ve Rehabilitasyon",
     "Unvan": "Pratisyen Hekim",
-    "Deneyim Yılı": 2,
-    "Çalışma Saatleri": "09:00 - 17:00"
+    "DeneyimYili": 2,
+    "CalismaSaatleri": "09:00 - 17:00"
   },
 
   "21000000025": {
@@ -281,10 +281,10 @@
     "TC": "21000000025",
     "Telefon": "05590025025",
     "Cinsiyet": "Kadın",
-    "Branş": "Gastroenteroloji",
+    "Brans": "Gastroenteroloji",
     "Unvan": "Uzman Doktor",
-    "Deneyim Yılı": 10,
-    "Çalışma Saatleri": "09:00 - 17:00"
+    "DeneyimYili": 10,
+    "CalismaSaatleri": "09:00 - 17:00"
   },
   "21000000026": {
     "Ad": "Merve",
@@ -292,10 +292,10 @@
     "TC": "21000000026",
     "Telefon": "05430026026",
     "Cinsiyet": "Kadın",
-    "Branş": "Gastroenteroloji",
+    "Brans": "Gastroenteroloji",
     "Unvan": "Doçent Doktor",
-    "Deneyim Yılı": 16,
-    "Çalışma Saatleri": "09:00 - 17:00"
+    "DeneyimYili": 16,
+    "CalismaSaatleri": "09:00 - 17:00"
   },
 
   "21000000027": {
@@ -304,10 +304,10 @@
     "TC": "21000000027",
     "Telefon": "05340027027",
     "Cinsiyet": "Kadın",
-    "Branş": "Endokrinoloji",
+    "Brans": "Endokrinoloji",
     "Unvan": "Uzman Doktor",
-    "Deneyim Yılı": 8,
-    "Çalışma Saatleri": "09:00 - 17:00"
+    "DeneyimYili": 8,
+    "CalismaSaatleri": "09:00 - 17:00"
   },
   "21000000028": {
     "Ad": "Aslı",
@@ -315,10 +315,10 @@
     "TC": "21000000028",
     "Telefon": "05520028028",
     "Cinsiyet": "Kadın",
-    "Branş": "Endokrinoloji",
+    "Brans": "Endokrinoloji",
     "Unvan": "Pratisyen Hekim",
-    "Deneyim Yılı": 3,
-    "Çalışma Saatleri": "09:00 - 17:00"
+    "DeneyimYili": 3,
+    "CalismaSaatleri": "09:00 - 17:00"
   },
 
   "21000000029": {
@@ -327,10 +327,10 @@
     "TC": "21000000029",
     "Telefon": "05380029029",
     "Cinsiyet": "Kadın",
-    "Branş": "Hematoloji",
+    "Brans": "Hematoloji",
     "Unvan": "Uzman Doktor",
-    "Deneyim Yılı": 9,
-    "Çalışma Saatleri": "09:30 - 17:30"
+    "DeneyimYili": 9,
+    "CalismaSaatleri": "09:30 - 17:30"
   },
   "21000000030": {
     "Ad": "Nazlı",
@@ -338,9 +338,9 @@
     "TC": "21000000030",
     "Telefon": "05450030030",
     "Cinsiyet": "Kadın",
-    "Branş": "Hematoloji",
+    "Brans": "Hematoloji",
     "Unvan": "Profesör Doktor",
-    "Deneyim Yılı": 19,
-    "Çalışma Saatleri": "09:30 - 17:30"
+    "DeneyimYili": 19,
+    "CalismaSaatleri": "09:30 - 17:30"
   }
 }

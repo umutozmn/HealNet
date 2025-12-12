@@ -92,6 +92,7 @@
             this.btnTemizle.TabIndex = 33;
             this.btnTemizle.Text = "TEMİZLE";
             this.btnTemizle.UseVisualStyleBackColor = false;
+            this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click_1);
             // 
             // groupBox1
             // 
@@ -418,6 +419,7 @@
             this.txtAra.Name = "txtAra";
             this.txtAra.Size = new System.Drawing.Size(225, 33);
             this.txtAra.TabIndex = 36;
+            this.txtAra.TextChanged += new System.EventHandler(this.txtAra_TextChanged);
             // 
             // dtgDoktorlar
             // 

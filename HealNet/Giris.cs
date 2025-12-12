@@ -196,12 +196,7 @@ namespace HealNet
             txtSifre.UseSystemPasswordChar = checkBoxSifreGoster.Checked;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            AnaEkran anaEkran = new AnaEkran();
-            anaEkran.Show();
-            this.Hide();
-        }
+        
     }
 }
 
