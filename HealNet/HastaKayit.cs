@@ -155,7 +155,7 @@ namespace HealNet
             // E) Firebase'e Gönder
             await baglanti.SetAsync("Hastalar/" + txtTC.Text, yeniHasta); // Hastalar klasörü altında TC klasörü açılır ve altına yeniHasta kayıtları gelir
 
-            MessageBox.Show("Hasta kaydedildi.");
+            MessageBox.Show(txtAd.Text + " " + txtSoyad.Text + " adlı hasta kaydedildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // F) Temizlik ve Yenileme
             btnYenile.PerformClick(); // Yenile butonunda yaptığımız işlemi çalıştırarak listeyi günceller
@@ -180,7 +180,7 @@ namespace HealNet
 
                 await baglanti.DeleteAsync("Hastalar/" + txtTC.Text); // Silme işlemi TC numarasına göre yapılır.
 
-                MessageBox.Show("Kayıt silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(txtAd.Text + " " + txtSoyad.Text + " adlı kayıt silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 btnYenile.PerformClick(); // Listeyi güncelle
                 AlanlariTemizle();        // Kutuları temizle
@@ -243,6 +243,6 @@ namespace HealNet
             this.Hide();
         }
 
-
+      
     }
 }

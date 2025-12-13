@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBoxPersonel = new System.Windows.Forms.CheckBox();
             this.checkBoxAdmin = new System.Windows.Forms.CheckBox();
             this.checkBoxSifreGoster = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -44,6 +45,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.checkBoxPersonel);
             this.panel1.Controls.Add(this.checkBoxAdmin);
             this.panel1.Controls.Add(this.checkBoxSifreGoster);
             this.panel1.Controls.Add(this.button1);
@@ -57,16 +59,28 @@
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // checkBoxPersonel
+            // 
+            this.checkBoxPersonel.AutoSize = true;
+            this.checkBoxPersonel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBoxPersonel.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.checkBoxPersonel.Location = new System.Drawing.Point(275, 30);
+            this.checkBoxPersonel.Name = "checkBoxPersonel";
+            this.checkBoxPersonel.Size = new System.Drawing.Size(102, 38);
+            this.checkBoxPersonel.TabIndex = 6;
+            this.checkBoxPersonel.Text = "  Personel \r\n(Etkin Değil)";
+            this.checkBoxPersonel.UseVisualStyleBackColor = true;
+            // 
             // checkBoxAdmin
             // 
             this.checkBoxAdmin.AutoSize = true;
             this.checkBoxAdmin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.checkBoxAdmin.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.checkBoxAdmin.Location = new System.Drawing.Point(309, 3);
+            this.checkBoxAdmin.Location = new System.Drawing.Point(275, 3);
             this.checkBoxAdmin.Name = "checkBoxAdmin";
-            this.checkBoxAdmin.Size = new System.Drawing.Size(68, 21);
+            this.checkBoxAdmin.Size = new System.Drawing.Size(70, 21);
             this.checkBoxAdmin.TabIndex = 3;
-            this.checkBoxAdmin.Text = "admin";
+            this.checkBoxAdmin.Text = "Admin";
             this.checkBoxAdmin.UseVisualStyleBackColor = true;
             // 
             // checkBoxSifreGoster
@@ -177,6 +191,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Giris";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -201,6 +216,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBoxSifreGoster;
+        private System.Windows.Forms.CheckBox checkBoxPersonel;
         private System.Windows.Forms.CheckBox checkBoxAdmin;
     }
 }

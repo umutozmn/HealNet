@@ -14,12 +14,16 @@ namespace HealNet
         public string HastaTC { get; set; }      // Kimin randevusu?
 
         public string HastaAdSoyad { get; set; } // Listede "Ahmet Yılmaz" diye görmek için
+        public string HastaTelefon { get; set; }  // Randevu hatırlatması için telefon numarası
 
         public string DoktorAd { get; set; }     // "Prof. Dr. Mehmet Öz" şeklinde tam isim
 
         public string Tarih { get; set; }        // 12.12.2025
 
         public string Saat { get; set; }         // 14:30
+
+
+ public string Ucret { get; set; }        // Randevu ücreti
 
     }
 }

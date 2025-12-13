@@ -16,33 +16,14 @@ namespace HealNet
 
         public string CalismaSaatleri { get; set; } // Örn: 09:00-17:00
 
-
-        // --- POLİMORFİZM / BUSINESS LOGIC ---
-        public double MuayeneUcretiHesapla()
+        public virtual double MuayeneUcretiHesapla()
         {
-            double ucret = 0;
-
-            if (Unvan == "Profesör")
-            {
-                ucret = 1500;
-            }
-            else if (Unvan == "Doçent")
-            {
-                ucret = 1000;
-            }
-            else if (Unvan == "Uzman Dr.")
-            {
-                ucret = 800;
-            }
-            else
-            {
-                ucret = 500; // Pratisyen vb.
-            }
-            double deneyimBonus = DeneyimYili * 20;
-
-            return ucret+ deneyimBonus;
-
-
+            return 500 + (DeneyimYili * 20);
+        }
+        
+        public override string ToString()
+        {
+            return Unvan + " " + Ad + " " + Soyad;
         }
     }
 }

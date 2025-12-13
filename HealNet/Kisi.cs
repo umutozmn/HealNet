@@ -11,8 +11,9 @@ namespace HealNet
         public string TC { get; set; } // Kimlik ID olacak
         public string Ad { get; set; }
         public string Soyad { get; set; }
-        public string Telefon { get; set; }
         public string Cinsiyet { get; set; }
+
+        public string Telefon { get; set; }
 
     }
 }

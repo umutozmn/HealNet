@@ -39,6 +39,7 @@ namespace HealNet
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             // 1. Santralden hattı çekiyoruz
             var baglanti = FirebaseBaglantisi.BaglantiGetir();
 
@@ -64,64 +65,62 @@ namespace HealNet
 
             if (checkBoxAdmin.Checked == false)
             {
-                MessageBox.Show("Lütfen kullanıcı seçiniz .");
+                MessageBox.Show("Lütfen kullanıcı seçiniz.");
                 return; // Kod burada durur, aşağıya inmez.
             }
 
-            if (string.IsNullOrWhiteSpace(txtKullaniciAdi.Text))
+            else if (string.IsNullOrWhiteSpace(txtKullaniciAdi.Text))
             {
                 MessageBox.Show("Lütfen kullanıcı adını giriniz.");
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtSifre.Text))
+            else if (string.IsNullOrWhiteSpace(txtSifre.Text))
             {
                 MessageBox.Show("Lütfen şifre giriniz.");
                 return;
             }
 
-            try
+            if (checkBoxAdmin.Checked == true)
             {
-                // Veriyi çek
-                var kullaniciData = await baglanti.GetAsync("Kullanicilar/admin/KullaniciAdi");
+                // Admin girişi
 
+                var kullaniciData = await baglanti.GetAsync("Kullanicilar/admin/KullaniciAdi"); // Veritabanından Kullanicilar/admin/KullaniciAdi klasörü içindeki verileri al
+
+                
+                var sifreData = await baglanti.GetAsync("Kullanicilar/admin/Sifre");   // Veritabanından Kullanicilar/admin/Sifre klasörü içindeki verileri al
+                
                 if (kullaniciData.Body == "null")
                 {
-                    MessageBox.Show("Kullanıcı Bulunamadı!");
-                    return;
+                    MessageBox.Show("Admin kaydı bulunamadı");
                 }
 
-                string kullaniciDb = kullaniciData.ResultAs<string>();
-
-                var sifreData = await baglanti.GetAsync("Kullanicilar/admin/Sifre");
-                string sifreDb = sifreData.ResultAs<string>();
+                string kullaniciDb = kullaniciData.ResultAs<string>(); // Alınan sonucu stringe çevir
+                string sifreDb = sifreData.ResultAs<string>(); // Alınan sonucu stringe çevir
 
                 if (kullaniciDb == txtKullaniciAdi.Text && sifreDb == txtSifre.Text)
                 {
-                    MessageBox.Show("Giriş Yapıldı", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    MessageBox.Show("Ana Ekrana Yönlendiriliyorsunuz", "Giriş Yapıldı", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
-                    // Ana Ekranı aç
                     AnaEkran anaEkran = new AnaEkran();
                     anaEkran.Show();
                     this.Hide();
                 }
+
                 else
                 {
-                    MessageBox.Show("Hatalı Şifre", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lütfen verilerinizi kontrol ediniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
+
             }
-            catch (Exception hata)
-            {
-                MessageBox.Show("Hata oluştu: " + hata.Message);
-            }
+
         }
 
 
 
 
-
-
-
+        // GÖRSELLİK AYARLARI
         private void Form1_Paint_1(object sender, PaintEventArgs e)
         {
 
@@ -179,24 +178,14 @@ namespace HealNet
                 Color.White,
                 TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
         }
-        private void button1_MouseEnter(object sender, EventArgs e)
-        {
-            button1.BackColor = Color.FromArgb(0, 91, 181);
-            button1.Invalidate(); // yeniden çiz
-        }
 
-        private void button1_MouseLeave(object sender, EventArgs e)
-        {
-            button1.BackColor = Color.FromArgb(0, 123, 255);
-            button1.Invalidate();
-        }
 
         private void checkBoxSifreGoster_CheckedChanged(object sender, EventArgs e)
         {
             txtSifre.UseSystemPasswordChar = checkBoxSifreGoster.Checked;
         }
 
-        
+
     }
 }
 

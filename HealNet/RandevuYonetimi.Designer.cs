@@ -51,11 +51,31 @@
             this.btnYenile = new System.Windows.Forms.Button();
             this.btnSil = new System.Windows.Forms.Button();
             this.btnKaydet = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.labelAra = new System.Windows.Forms.Label();
+            this.txtAra = new System.Windows.Forms.TextBox();
             btnGeri = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgRandevular)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnGeri
+            // 
+            btnGeri.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(50)))));
+            btnGeri.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnGeri.FlatAppearance.BorderSize = 0;
+            btnGeri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnGeri.Font = new System.Drawing.Font("Segoe UI Variable Text", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            btnGeri.ForeColor = System.Drawing.Color.White;
+            btnGeri.Image = global::HealNet.Properties.Resources.icons8_back_501;
+            btnGeri.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnGeri.Location = new System.Drawing.Point(12, 12);
+            btnGeri.Name = "btnGeri";
+            btnGeri.Size = new System.Drawing.Size(80, 59);
+            btnGeri.TabIndex = 41;
+            btnGeri.UseVisualStyleBackColor = false;
+            btnGeri.Click += new System.EventHandler(this.btnGeri_Click);
             // 
             // groupBox1
             // 
@@ -108,7 +128,7 @@
             this.btnAra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(50)))));
             this.btnAra.Location = new System.Drawing.Point(377, 45);
             this.btnAra.Name = "btnAra";
-            this.btnAra.Size = new System.Drawing.Size(76, 28);
+            this.btnAra.Size = new System.Drawing.Size(76, 34);
             this.btnAra.TabIndex = 35;
             this.btnAra.Text = "ARA";
             this.btnAra.UseVisualStyleBackColor = false;
@@ -182,7 +202,7 @@
             this.dtpTarih.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpTarih.Location = new System.Drawing.Point(194, 147);
             this.dtpTarih.Name = "dtpTarih";
-            this.dtpTarih.Size = new System.Drawing.Size(200, 27);
+            this.dtpTarih.Size = new System.Drawing.Size(210, 27);
             this.dtpTarih.TabIndex = 10;
             // 
             // label9
@@ -285,11 +305,11 @@
             this.dtgRandevular.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(50)))));
             this.dtgRandevular.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgRandevular.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgRandevular.Location = new System.Drawing.Point(503, 52);
+            this.dtgRandevular.Location = new System.Drawing.Point(503, 88);
             this.dtgRandevular.Name = "dtgRandevular";
             this.dtgRandevular.RowHeadersWidth = 51;
             this.dtgRandevular.RowTemplate.Height = 24;
-            this.dtgRandevular.Size = new System.Drawing.Size(806, 684);
+            this.dtgRandevular.Size = new System.Drawing.Size(806, 648);
             this.dtgRandevular.TabIndex = 36;
             // 
             // btnTemizle
@@ -300,7 +320,7 @@
             this.btnTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTemizle.Font = new System.Drawing.Font("Segoe UI Variable Text", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnTemizle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(50)))));
-            this.btnTemizle.Location = new System.Drawing.Point(179, 677);
+            this.btnTemizle.Location = new System.Drawing.Point(27, 663);
             this.btnTemizle.Name = "btnTemizle";
             this.btnTemizle.Size = new System.Drawing.Size(144, 34);
             this.btnTemizle.TabIndex = 40;
@@ -347,7 +367,7 @@
             this.btnKaydet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnKaydet.Font = new System.Drawing.Font("Segoe UI Variable Text", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnKaydet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(50)))));
-            this.btnKaydet.Location = new System.Drawing.Point(336, 677);
+            this.btnKaydet.Location = new System.Drawing.Point(353, 663);
             this.btnKaydet.Name = "btnKaydet";
             this.btnKaydet.Size = new System.Drawing.Size(144, 34);
             this.btnKaydet.TabIndex = 37;
@@ -355,22 +375,40 @@
             this.btnKaydet.UseVisualStyleBackColor = false;
             this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
-            // btnGeri
+            // label10
             // 
-            btnGeri.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(50)))));
-            btnGeri.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnGeri.FlatAppearance.BorderSize = 0;
-            btnGeri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnGeri.Font = new System.Drawing.Font("Segoe UI Variable Text", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            btnGeri.ForeColor = System.Drawing.Color.White;
-            btnGeri.Image = global::HealNet.Properties.Resources.icons8_back_501;
-            btnGeri.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnGeri.Location = new System.Drawing.Point(12, 12);
-            btnGeri.Name = "btnGeri";
-            btnGeri.Size = new System.Drawing.Size(80, 59);
-            btnGeri.TabIndex = 41;
-            btnGeri.UseVisualStyleBackColor = false;
-            btnGeri.Click += new System.EventHandler(this.btnGeri_Click);
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(137, 52);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(252, 41);
+            this.label10.TabIndex = 42;
+            this.label10.Text = "Randevu Sistemi";
+            // 
+            // labelAra
+            // 
+            this.labelAra.AutoSize = true;
+            this.labelAra.BackColor = System.Drawing.Color.Transparent;
+            this.labelAra.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelAra.ForeColor = System.Drawing.Color.White;
+            this.labelAra.Location = new System.Drawing.Point(499, 26);
+            this.labelAra.Name = "labelAra";
+            this.labelAra.Size = new System.Drawing.Size(99, 20);
+            this.labelAra.TabIndex = 43;
+            this.labelAra.Text = "Randevu Ara";
+            // 
+            // txtAra
+            // 
+            this.txtAra.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAra.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtAra.Location = new System.Drawing.Point(503, 49);
+            this.txtAra.Multiline = true;
+            this.txtAra.Name = "txtAra";
+            this.txtAra.Size = new System.Drawing.Size(225, 33);
+            this.txtAra.TabIndex = 44;
+            this.txtAra.TextChanged += new System.EventHandler(this.txtAra_TextChanged);
             // 
             // RandevuYonetimi
             // 
@@ -378,6 +416,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(50)))));
             this.ClientSize = new System.Drawing.Size(1321, 748);
+            this.Controls.Add(this.labelAra);
+            this.Controls.Add(this.txtAra);
+            this.Controls.Add(this.label10);
             this.Controls.Add(btnGeri);
             this.Controls.Add(this.btnTemizle);
             this.Controls.Add(this.btnYenile);
@@ -397,6 +438,7 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgRandevular)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -424,5 +466,8 @@
         private System.Windows.Forms.Button btnKaydet;
         private System.Windows.Forms.TextBox txtHastaTelefon;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label labelAra;
+        private System.Windows.Forms.TextBox txtAra;
     }
 }

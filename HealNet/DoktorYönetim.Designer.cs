@@ -39,7 +39,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -48,7 +47,6 @@
             this.txtAd = new System.Windows.Forms.TextBox();
             this.comboCinsiyet = new System.Windows.Forms.ComboBox();
             this.txtSoyad = new System.Windows.Forms.TextBox();
-            this.txtTelefon = new System.Windows.Forms.TextBox();
             this.btnYenile = new System.Windows.Forms.Button();
             this.btnSil = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
@@ -56,6 +54,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtAra = new System.Windows.Forms.TextBox();
             this.dtgDoktorlar = new System.Windows.Forms.DataGridView();
+            this.txtTelefon = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             btnGeri = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDoktorlar)).BeginInit();
@@ -130,6 +130,7 @@
             this.txtCalismaSaatleri.Location = new System.Drawing.Point(194, 468);
             this.txtCalismaSaatleri.Multiline = true;
             this.txtCalismaSaatleri.Name = "txtCalismaSaatleri";
+            this.txtCalismaSaatleri.ReadOnly = true;
             this.txtCalismaSaatleri.Size = new System.Drawing.Size(210, 34);
             this.txtCalismaSaatleri.TabIndex = 12;
             // 
@@ -215,18 +216,6 @@
             this.label3.Size = new System.Drawing.Size(51, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "Soyad";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(36, 213);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 20);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Telefon";
             // 
             // label6
             // 
@@ -329,15 +318,6 @@
             this.txtSoyad.Size = new System.Drawing.Size(210, 34);
             this.txtSoyad.TabIndex = 3;
             // 
-            // txtTelefon
-            // 
-            this.txtTelefon.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtTelefon.Location = new System.Drawing.Point(194, 208);
-            this.txtTelefon.Multiline = true;
-            this.txtTelefon.Name = "txtTelefon";
-            this.txtTelefon.Size = new System.Drawing.Size(210, 34);
-            this.txtTelefon.TabIndex = 4;
-            // 
             // btnYenile
             // 
             this.btnYenile.BackColor = System.Drawing.Color.White;
@@ -434,6 +414,27 @@
             this.dtgDoktorlar.TabIndex = 35;
             this.dtgDoktorlar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgDoktorlar_CellClick);
             // 
+            // txtTelefon
+            // 
+            this.txtTelefon.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtTelefon.Location = new System.Drawing.Point(194, 208);
+            this.txtTelefon.Multiline = true;
+            this.txtTelefon.Name = "txtTelefon";
+            this.txtTelefon.Size = new System.Drawing.Size(210, 34);
+            this.txtTelefon.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(36, 213);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(61, 20);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Telefon";
+            // 
             // DoktorYönetim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -470,7 +471,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtTC;
@@ -478,7 +478,6 @@
         private System.Windows.Forms.TextBox txtAd;
         private System.Windows.Forms.ComboBox comboCinsiyet;
         private System.Windows.Forms.TextBox txtSoyad;
-        private System.Windows.Forms.TextBox txtTelefon;
         private System.Windows.Forms.Button btnYenile;
         private System.Windows.Forms.Button btnSil;
         private System.Windows.Forms.Label label10;
@@ -492,5 +491,7 @@
         private System.Windows.Forms.TextBox txtDeneyim;
         private System.Windows.Forms.TextBox txtCalismaSaatleri;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtTelefon;
     }
 }

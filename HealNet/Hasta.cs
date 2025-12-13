@@ -13,5 +13,6 @@ namespace HealNet
         public string KronikRahatsizliklar { get; set; }
         public string DogumTarihi { get; set; }
 
+
     }
 }
