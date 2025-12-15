@@ -26,7 +26,8 @@ namespace HealNet
             return Unvan + " " + Ad + " " + Soyad;
         }
 
-        // Babanın emrini uyguluyoruz (Override)
+
+        //  
         public override string RoluNedir()
         {
             return "Ben Doktor sınıfıyım";

@@ -12,8 +12,9 @@ namespace HealNet
 {
     public partial class RandevuYonetimi : Form
     {
-        // --- BU LİSTELERİ EKLE ---
-        // Tüm doktorları buraya çekeceğiz, sonra branşa göre süzeceğiz.
+
+
+        // Tüm doktorları burada alıp hafızada tutacağız.
         List<Doktor> hafizadakiDoktorlar = new List<Doktor>();
 
         // Randevuları buraya çekeceğiz.
@@ -35,7 +36,8 @@ namespace HealNet
             dtgRandevular.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
 
-            comboDoktorlar.Items.Clear();
+
+            comboDoktorlar.Items.Clear(); // Doktor silseydin comboda hala kalırdı, o yüzden temizle.
 
             foreach (var doktor in hafizadakiDoktorlar)
             {
@@ -45,14 +47,15 @@ namespace HealNet
 
             var baglanti = FirebaseBaglantisi.BaglantiGetir();
 
-            // A) DOKTORLARI ÇEK VE HAFIZAYA AT
-            var doktorCevap = await baglanti.GetAsync("Doktorlar");
-            if (doktorCevap.Body != "null")
+            // DOKTORLARI ÇEK VE HAFIZAYA AT
+            var doktorData = await baglanti.GetAsync("Doktorlar");
+            if (doktorData.Body != "null")
             {
-                var dictDoktorlar = doktorCevap.ResultAs<Dictionary<string, Doktor>>();
-                hafizadakiDoktorlar = dictDoktorlar.Values.ToList();
+                var doktorDataString = doktorData.ResultAs<Dictionary<string, Doktor>>();
+                hafizadakiDoktorlar = doktorDataString.Values.ToList();
             }
-            // B) RANDEVULARI ÇEK VE TABLOYA BAS
+
+
             Yenile();
         }
 
@@ -60,12 +63,12 @@ namespace HealNet
         private async void Yenile()
         {
             var baglanti = FirebaseBaglantisi.BaglantiGetir();
-            var randevuCevap = await baglanti.GetAsync("Randevular");
+            var randevuData = await baglanti.GetAsync("Randevular");
 
-            if (randevuCevap.Body != "null")
+            if (randevuData.Body != "null")
             {
-                var dictRandevular = randevuCevap.ResultAs<Dictionary<string, Randevu>>();
-                hafizadakiRandevular = dictRandevular.Values.ToList();
+                var randevuDataString = randevuData.ResultAs<Dictionary<string, Randevu>>();
+                hafizadakiRandevular = randevuDataString.Values.ToList();
                 dtgRandevular.DataSource = hafizadakiRandevular;
 
                 // İstemediğin sütunları gizle (ID gibi)
@@ -80,6 +83,7 @@ namespace HealNet
 
         private async void btnAra_Click(object sender, EventArgs e)
         {
+
             if (string.IsNullOrEmpty(txtHastaTC.Text))
             {
                 MessageBox.Show("Lütfen bir TC numarası giriniz.");
@@ -88,15 +92,16 @@ namespace HealNet
 
             var baglanti = FirebaseBaglantisi.BaglantiGetir();
 
-            // Hastalar tablosuna git ve bu TC'yi sor
-            var cevap = await baglanti.GetAsync("Hastalar/" + txtHastaTC.Text);
+            // Hastalar tablosuna gidip o tcdeki veriyi alacak
+            var hastaData = await baglanti.GetAsync("Hastalar/" + txtHastaTC.Text);
 
-            if (cevap.Body != "null")
+            if (hastaData.Body != "null")
             {
-                // Veriyi "Hasta" sınıfına çevir
-                Hasta bulunanHasta = cevap.ResultAs<Hasta>();
+                // Veriyi "Hasta" sınıfına çevir. Atama yapacağız ya o yüzden
+                Hasta bulunanHasta = hastaData.ResultAs<Hasta>();
 
-                // Kutulara doldur (ReadOnly oldukları için kodla yazıyoruz)
+                
+                txtHastaTC.Text = bulunanHasta.TC;
                 txtHastaAdSoyad.Text = bulunanHasta.Ad + " " + bulunanHasta.Soyad;
                 txtHastaTelefon.Text = bulunanHasta.Telefon;
 
@@ -104,27 +109,30 @@ namespace HealNet
             }
             else
             {
-                MessageBox.Show("Bu TC numarasına ait hasta bulunamadı. Lütfen önce Hasta Kayıt yapınız.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bu TC numarasına ait hasta bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                txtHastaTC.Clear();
                 txtHastaAdSoyad.Clear();
                 txtHastaTelefon.Clear();
             }
         }
 
-        // ============================================================
-        // 4. BÖLÜM: AKILLI DOKTOR FİLTRESİ (BRAIN) 🧠
-        // ============================================================
+
+
+
+        //  AKILLI DOKTOR FİLTRESİ 
         private void comboBrans_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // 1. Önce kullanıcının seçtiği branşı alalım (Örn: Göz)
+            // Önce kullanıcının seçtiği branşı alalım (Örn: Kardiyoloji)
             string secilenBrans = comboBrans.Text;
 
-            // 2. Doktor kutusunu temizleyelim ki eskiler gitsin
+            // Yapmasaydık: İlk seçtiğimiz bölümün doktorları gelecekti oraya ama sonra bölüm değiştirsek eski bölümün doktorları orada durmaya devam edecekti.
             comboDoktorlar.Items.Clear();
 
-            // 3. Sayaç tutalım (Kaç doktor bulduk bilmek için)
-            int bulunanSayisi = 0;
+            //  Kaç doktor bulduk
+            int doktorSayisi = 0;
 
-            // 4. HAFIZADAKİ TÜM DOKTORLARI TEK TEK GEZİYORUZ (Döngü)
+            // Hafızamızdaki doktorlara bakıyoruz 
             foreach (Doktor dr in hafizadakiDoktorlar)
             {
                 // Eğer sıradaki doktorun branşı, bizim seçtiğimizle aynıysa...
@@ -134,20 +142,19 @@ namespace HealNet
                     comboDoktorlar.Items.Add(dr.Unvan + " " + dr.Ad + " " + dr.Soyad);
 
                     // Sayacı bir arttır
-                    bulunanSayisi++;
+                    doktorSayisi++;
                 }
             }
 
-            
-
-            // 5. Sonucu göster
-            MessageBox.Show(bulunanSayisi + " tane doktor bulundu.");
+            MessageBox.Show(doktorSayisi + " tane doktor bulundu.");
         }
+
+
 
         private async void btnKaydet_Click(object sender, EventArgs e)
         {
-            // A) Boş Alan Kontrolü
-            if (string.IsNullOrEmpty(txtHastaAdSoyad.Text) || string.IsNullOrEmpty(comboDoktorlar.Text) ||
+            // Zorunlu alanlar 
+            if (string.IsNullOrEmpty(txtHastaAdSoyad.Text) ||  string.IsNullOrEmpty(comboDoktorlar.Text) ||
                 string.IsNullOrEmpty(comboSaat.Text))
             {
                 MessageBox.Show("Lütfen hasta bulunuz, doktor ve saat seçiniz.");
@@ -159,76 +166,73 @@ namespace HealNet
             string secilenSaat = comboSaat.Text;
 
 
-            // -------------------------------------------------------------
-            // B) POLİMORFİZM İLE ÜCRET HESAPLAMA (ŞOV ZAMANI) 🎩
-            // -------------------------------------------------------------
+            // POLİMORFİZM İLE ÜCRET HESAPLAMA yapıyoruz
 
             double hesaplananUcret = 0;
 
-            // 1. Önce listeden seçilen doktorun "Verilerini" bulalım
-            Doktor bulunanDoktorVerisi = null;
+            Doktor doktorData = null;
 
-            foreach (Doktor dr in hafizadakiDoktorlar)
+            foreach (Doktor dr in hafizadakiDoktorlar) // Hafızadaki doktorlara bak
             {
-                // Senin Doktor sınıfında ToString() metodunu ezdiğin için işimiz çok kolaylaştı!
-                // dr.ToString() bize direkt "Unvan Ad Soyad" verir.
-                if (dr.ToString() == secilenDoktorYazisi)
+                if (dr.ToString() == secilenDoktorYazisi) // Burada dr içinde unvan, ad, soyad var ve biz de aynı formatta karşılaştırıyoruz
                 {
-                    bulunanDoktorVerisi = dr;
+                    doktorData = dr;
                     break;
                 }
             }
 
-            // 2. Şimdi Unvana göre doğru "Sınıfı" canlandıralım
-            if (bulunanDoktorVerisi != null)
+
+
+            if (doktorData != null) // Eğer doktor bulunduysa
             {
-                // Geçici bir doktor değişkeni (Bu her kılığa girebilir)
-                Doktor islemYapacakDoktor;
+                Doktor islemYapacakDoktor; // Burada islemYapacakDoktor referansını tutacağız
 
-                string unvan = bulunanDoktorVerisi.Unvan;
+                string unvan = doktorData.Unvan;  //  doktorData içinde Unvan, Ad ve Soyad var. Biz içinden Unvan'ı alıyoruz
 
-                if (unvan.Contains("Profesör") || unvan.Contains("Prof"))
+                if (unvan.Contains("Profesör Doktor") ) 
                 {
-                    islemYapacakDoktor = new Prof(); // Prof sınıfını devreye sok!
+                    islemYapacakDoktor = new Prof(); // Profesör sınıfı devreye girecek!
                 }
-                else if (unvan.Contains("Doçent") || unvan.Contains("Doç"))
+                else if (unvan.Contains("Doçent Doktor") )
                 {
-                    islemYapacakDoktor = new Docent(); // Doçent sınıfını devreye sok!
+                    islemYapacakDoktor = new Docent(); // Doçent sınıfı devreye girecek!
                 }
-                else if (unvan.Contains("Uzman") || unvan.Contains("Op"))
+                else if (unvan.Contains("Uzman Doktor")) 
                 {
-                    islemYapacakDoktor = new Uzman(); // Uzman sınıfını devreye sok!
+                    islemYapacakDoktor = new Uzman(); // Uzman sınıfı devreye girecek!
                 }
                 else
                 {
-                    islemYapacakDoktor = new Doktor(); // Düz (Pratisyen) doktor.
+                    islemYapacakDoktor = new Doktor(); //  (Pratisyen) sınıfı yani Doktor sınıfı devreye girecek.
                 }
 
-                // ÖNEMLİ DETAY: Deneyim yılını aktarmazsak hesap yapamaz!
-                islemYapacakDoktor.DeneyimYili = bulunanDoktorVerisi.DeneyimYili;
+                islemYapacakDoktor.DeneyimYili = doktorData.DeneyimYili; // Deneyim yılını da atıyoruz çünkü ücret hesaplamada lazım
 
-                // Ve büyülü an: Hangi sınıfı ürettiysek onun hesabı çalışır!
-                hesaplananUcret = islemYapacakDoktor.MuayeneUcretiHesapla();
+                hesaplananUcret = islemYapacakDoktor.MuayeneUcretiHesapla(); // hesaplananUcret değişkenine sonucu atıyoruz
             }
-            // -------------------------------------------------------------
 
 
 
-            // B) KRİTİK KONTROL: DOKTOR DOLU MU?
-            // Hafızadaki randevulara bak:
-            // Aynı Doktor AND Aynı Tarih AND Aynı Saat var mı?
-            bool doluMu = hafizadakiRandevular.Any(r =>
-                            r.DoktorAd == secilenDoktorYazisi &&
-                            r.Tarih == secilenTarih &&
-                            r.Saat == secilenSaat);
+            // Randevu çakışma kontrolü 
+            bool doluMu = false;
 
-            if (doluMu)
+            foreach (Randevu randevu in hafizadakiRandevular) // Hafızadaki randevulara bakıyoruz ve bunları randevu değişkenine atarak kontrol edeceğiz altta
             {
-                MessageBox.Show("DİKKAT! Seçilen doktorun bu saatte başka bir randevusu var.\nLütfen başka bir saat seçiniz.", "Randevu Çakışması", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                return; // Kaydetme, çık!
+                if (randevu.DoktorAd == secilenDoktorYazisi && randevu.Tarih == secilenTarih &&  randevu.Saat == secilenSaat) // Yeni randevuda girdiğin datalar kayıttaki randevuyla eşleşiyorsa
+                {
+                    doluMu = true;
+                    break; 
+                    
+                }
+                // Mesajı neden 
             }
 
-            
+            if (doluMu) // 
+            {
+                MessageBox.Show( "DİKKAT! Seçilen doktorun bu saatte başka bir randevusu var.\nLütfen başka bir saat seçiniz.",
+                    "Randevu Çakışması", MessageBoxButtons.OK,MessageBoxIcon.Stop);
+                return;
+            }
 
 
             // C) Kaydetme İşlemleri
@@ -246,7 +250,7 @@ namespace HealNet
 
 
             // Hesapladığımız ücreti buraya yazıyoruz
-            yeniRandevu.Ucret = hesaplananUcret.ToString() + " TL";
+            yeniRandevu.Ucret = hesaplananUcret.ToString() + " TL"; // 
 
             var baglanti = FirebaseBaglantisi.BaglantiGetir();
             await baglanti.SetAsync("Randevular/" + yeniRandevu.RandevuID, yeniRandevu);
@@ -259,17 +263,17 @@ namespace HealNet
         private async void btnSil_Click(object sender, EventArgs e)
         {
             // Tablodan seçilen satırı silme
-            if (dtgRandevular.SelectedRows.Count > 0)
+            if (dtgRandevular.SelectedRows.Count > 0) 
             {
-                // Gizli olan ID sütunundan değeri al
-                string id = dtgRandevular.CurrentRow.Cells["RandevuID"].Value.ToString();
+                
+                string id = dtgRandevular.CurrentRow.Cells["RandevuID"].Value.ToString();  // Buradaki currentrow, seçili satırı verir. Ondan da RandevuID hücresinin değerini alıyoruz stringe çevirerek. 
 
                 var baglanti = FirebaseBaglantisi.BaglantiGetir();
 
+                
+             var secim= MessageBox.Show("Randevuyu silmek istediğinize emin misiniz?", "Silme Onayı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                MessageBox.Show("Randevuyu silmek istediğinize emin misiniz?", "Silme Onayı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (DialogResult.Yes == DialogResult.Yes)
+                if (secim ==DialogResult.Yes)
                 {
                     await baglanti.DeleteAsync("Randevular/" + id);
                     MessageBox.Show("Randevu iptal edildi.");
@@ -294,43 +298,102 @@ namespace HealNet
         }
 
 
-        // Doktorun çalışma saat aralığına göre (Örn: 09:00 - 17:00) saatleri doldurur
+        // 1. BU ANA METOT (Karar Verici)
         private void SaatleriDoldur(string calismaAraligi)
         {
-            comboSaat.Items.Clear(); // Önce eski saatleri temizle
+            // Önce eski saatleri temizle, yoksa üst üste biner
+            comboSaat.Items.Clear();
 
-            try
+            // Senin yazdığın mantığı metodun içine aldık:
+            if (calismaAraligi == "09:00 - 17:00")
+                SaatleriDoldur_09_17();
+            else if (calismaAraligi == "08:30 - 16:30")
+                SaatleriDoldur_0830_1630();
+            else if (calismaAraligi == "08:00 - 16:00")
+                SaatleriDoldur_08_16();
+            else if (calismaAraligi == "09:30 - 17:30")
+                SaatleriDoldur_0930_1730();
+            else if (calismaAraligi == "10:00 - 18:00")
+                SaatleriDoldur_10_18();
+            else if (calismaAraligi == "08:30 - 17:00")
+                SaatleriDoldur_0830_17();
+            else
             {
-                // "09:00 - 17:00" yazısını ortadan ikiye bölüyoruz
-                string[] parcalar = calismaAraligi.Split('-');
-
-                // Başlangıç ve Bitiş saatlerini alıyoruz (Boşlukları temizleyerek)
-                TimeSpan baslangic = TimeSpan.Parse(parcalar[0].Trim());
-                TimeSpan bitis = TimeSpan.Parse(parcalar[1].Trim());
-
-                // Döngü kuruyoruz: Başlangıçtan bitişe kadar 15'er dakika ekle
-                while (baslangic < bitis)
-                {
-                    // Saati listeye ekle (Örn: 09:00)
-                    comboSaat.Items.Add(baslangic.ToString(@"hh\:mm"));
-
-                    // 15 dakika ileri sar (İstersen 20 veya 30 yapabilirsin)
-                    baslangic = baslangic.Add(TimeSpan.FromMinutes(15));
-                }
-            }
-            catch
-            {
-                // Eğer doktorun saati "Belirsiz" falan yazıyorsa standart saatleri koy
-                comboSaat.Items.Add("09:00");
-                comboSaat.Items.Add("10:00");
-                comboSaat.Items.Add("11:00");
-                comboSaat.Items.Add("12:00");
-                comboSaat.Items.Add("13:00");
-                comboSaat.Items.Add("14:00");
-                comboSaat.Items.Add("15:00");
-                comboSaat.Items.Add("16:00");
+                // Hiçbiri tutmazsa standart bir şey gelsin (Hata vermesin)
+                SaatleriDoldur_09_17();
             }
         }
+
+        // 2. BUNLAR DA SENİN HAZIRLADIĞIN METOTLAR
+        private void SaatleriDoldur_09_17()
+        {
+            comboSaat.Items.Add("09:00"); comboSaat.Items.Add("09:30");
+            comboSaat.Items.Add("10:00"); comboSaat.Items.Add("10:30");
+            comboSaat.Items.Add("11:00"); comboSaat.Items.Add("11:30");
+            comboSaat.Items.Add("13:00"); comboSaat.Items.Add("13:30");
+            comboSaat.Items.Add("14:00"); comboSaat.Items.Add("14:30");
+            comboSaat.Items.Add("15:00"); comboSaat.Items.Add("15:30");
+            comboSaat.Items.Add("16:00");
+        }
+
+        private void SaatleriDoldur_0830_1630()
+        {
+            comboSaat.Items.Add("08:30"); comboSaat.Items.Add("09:00");
+            comboSaat.Items.Add("09:30"); comboSaat.Items.Add("10:00");
+            comboSaat.Items.Add("10:30"); comboSaat.Items.Add("11:00");
+            comboSaat.Items.Add("11:30"); comboSaat.Items.Add("13:00");
+            comboSaat.Items.Add("13:30"); comboSaat.Items.Add("14:00");
+            comboSaat.Items.Add("14:30"); comboSaat.Items.Add("15:00");
+            comboSaat.Items.Add("15:30"); comboSaat.Items.Add("16:00");
+        }
+
+        private void SaatleriDoldur_08_16()
+        {
+            comboSaat.Items.Add("08:00"); comboSaat.Items.Add("08:30");
+            comboSaat.Items.Add("09:00"); comboSaat.Items.Add("09:30");
+            comboSaat.Items.Add("10:00"); comboSaat.Items.Add("10:30");
+            comboSaat.Items.Add("11:00"); comboSaat.Items.Add("11:30");
+            comboSaat.Items.Add("13:00"); comboSaat.Items.Add("13:30");
+            comboSaat.Items.Add("14:00"); comboSaat.Items.Add("14:30");
+            comboSaat.Items.Add("15:00"); comboSaat.Items.Add("15:30");
+        }
+
+        private void SaatleriDoldur_0930_1730()
+        {
+            comboSaat.Items.Add("09:30"); comboSaat.Items.Add("10:00");
+            comboSaat.Items.Add("10:30"); comboSaat.Items.Add("11:00");
+            comboSaat.Items.Add("11:30"); comboSaat.Items.Add("13:00");
+            comboSaat.Items.Add("13:30"); comboSaat.Items.Add("14:00");
+            comboSaat.Items.Add("14:30"); comboSaat.Items.Add("15:00");
+            comboSaat.Items.Add("15:30"); comboSaat.Items.Add("16:00");
+            comboSaat.Items.Add("16:30"); comboSaat.Items.Add("17:00");
+        }
+
+        private void SaatleriDoldur_10_18()
+        {
+            comboSaat.Items.Add("10:00"); comboSaat.Items.Add("10:30");
+            comboSaat.Items.Add("11:00"); comboSaat.Items.Add("11:30");
+            comboSaat.Items.Add("13:00"); comboSaat.Items.Add("13:30");
+            comboSaat.Items.Add("14:00"); comboSaat.Items.Add("14:30");
+            comboSaat.Items.Add("15:00"); comboSaat.Items.Add("15:30");
+            comboSaat.Items.Add("16:00"); comboSaat.Items.Add("16:30");
+            comboSaat.Items.Add("17:00"); comboSaat.Items.Add("17:30");
+        }
+
+        private void SaatleriDoldur_0830_17()
+        {
+            comboSaat.Items.Add("08:30"); comboSaat.Items.Add("09:00");
+            comboSaat.Items.Add("09:30"); comboSaat.Items.Add("10:00");
+            comboSaat.Items.Add("10:30"); comboSaat.Items.Add("11:00");
+            comboSaat.Items.Add("11:30"); comboSaat.Items.Add("13:00");
+            comboSaat.Items.Add("13:30"); comboSaat.Items.Add("14:00");
+            comboSaat.Items.Add("14:30"); comboSaat.Items.Add("15:00");
+            comboSaat.Items.Add("15:30"); comboSaat.Items.Add("16:00");
+            comboSaat.Items.Add("16:30");
+        }
+
+
+
 
 
         private void comboDoktorlar_SelectedIndexChanged(object sender, EventArgs e)
@@ -340,25 +403,23 @@ namespace HealNet
             {
                 string secilenDoktorYazisi = comboDoktorlar.Text;
 
-                // Hafızadaki listeden bu isme sahip doktoru bul
-                // (Unvan + Ad + Soyad formatında birleştirip karşılaştırıyoruz)
-                Doktor secilenDoktor = null;
+                Doktor doktorData = null; // Başta null yapıyoruz çünkü bulamayabiliriz
 
-                foreach (var dr in hafizadakiDoktorlar)
+                foreach (Doktor dr in hafizadakiDoktorlar)
                 {
                     string tamIsim = dr.Unvan + " " + dr.Ad + " " + dr.Soyad;
 
                     if (tamIsim == secilenDoktorYazisi)
                     {
-                        secilenDoktor = dr;
+                        doktorData = dr;
                         break;
                     }
                 }
 
                 // Eğer doktor bulunduysa saatlerini doldur
-                if (secilenDoktor != null)
+                if (doktorData != null)
                 {
-                    SaatleriDoldur(secilenDoktor.CalismaSaatleri);
+                    SaatleriDoldur(doktorData.CalismaSaatleri); 
                 }
             }
         }
@@ -368,18 +429,26 @@ namespace HealNet
         {
             string aranan = txtAra.Text.ToLower();
 
-            var filtrelenenListe = hafizadakiRandevular
-                .Where(x => x.HastaAdSoyad.ToLower().Contains(aranan) || x.HastaTC.Contains(aranan)).ToList();
+            List<Randevu> arananListe = new List<Randevu>();  // Sonuçları buna koyacağız 
 
-            dtgRandevular.DataSource = filtrelenenListe;
+            foreach (Randevu r in hafizadakiRandevular)
+            {
+                if (r.HastaAdSoyad.ToLower().Contains(aranan) ||  r.HastaTC.Contains(aranan)) 
+                {
+                    arananListe.Add(r);
+                }
+            }
+
+            dtgRandevular.DataSource = arananListe;
         }
 
-           private void btnGeri_Click(object sender, EventArgs e)
+        private void btnGeri_Click(object sender, EventArgs e)
         {
             AnaEkran anaEkran = new AnaEkran();
             anaEkran.Show();
             this.Hide();
         }
+
     }
 }
 

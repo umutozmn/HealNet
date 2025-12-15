@@ -16,20 +16,6 @@ namespace HealNet
 {
     public partial class Giris : Form
     {
-        // 1. AYARLAR KISMI (Eski adı: config)
-        IFirebaseConfig firebaseAyarlari = new FirebaseConfig
-        {
-            // Gizli şifren buraya
-            AuthSecret = "USoiJDXJiPetiw5QjaRJbmnaVDHXNvJmqGPxsgdC",
-
-            // Linkin buraya (Sonunda / olmadan)
-            BasePath = "https://healnet-56cd7-default-rtdb.europe-west1.firebasedatabase.app"
-        };
-
-        // 2. BAĞLANTI NESNESİ
-        IFirebaseClient baglanti;
-
-
 
         // FORM AÇILINCA ÇALIŞAN KISIM
         public Giris()
@@ -40,13 +26,12 @@ namespace HealNet
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            // 1. Santralden hattı çekiyoruz
+            // FireabaseBaglantisi adlı sınıftaki BaglantiGetir metodu sayesinde baglantıyı alıyoruz
             var baglanti = FirebaseBaglantisi.BaglantiGetir();
 
-            // 2. Kontrol edip mesajı veriyoruz (Senin istediğin gibi)
-            if (baglanti != null)
+
+            if (baglanti != null) // Eğer bağlantı boş değilse 
             {
-                MessageBox.Show("Firebase Bağlantısı Başarılı!");
             }
             else
             {
@@ -58,47 +43,42 @@ namespace HealNet
 
 
 
-        private async void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e) // GİRİŞ BUTONU
         {
             // Butona basınca tekrar hattı çekiyoruz
             var baglanti = FirebaseBaglantisi.BaglantiGetir();
 
             if (checkBoxAdmin.Checked == false)
             {
-                MessageBox.Show("Lütfen kullanıcı seçiniz.");
+                MessageBox.Show("Lütfen giriş türünü (Admin) seçiniz.");
                 return; // Kod burada durur, aşağıya inmez.
             }
 
-            else if (string.IsNullOrWhiteSpace(txtKullaniciAdi.Text))
+            else if (string.IsNullOrWhiteSpace(txtKullaniciAdi.Text) || string.IsNullOrWhiteSpace(txtSifre.Text)) // Eğer kullanıcı adı boş bırakılmışsa
             {
-                MessageBox.Show("Lütfen kullanıcı adını giriniz.");
+                MessageBox.Show("Lütfen kullanıcı adı ve şifreyi giriniz.");
                 return;
             }
 
-            else if (string.IsNullOrWhiteSpace(txtSifre.Text))
-            {
-                MessageBox.Show("Lütfen şifre giriniz.");
-                return;
-            }
+           
 
             if (checkBoxAdmin.Checked == true)
             {
-                // Admin girişi
+                // Admin girişi yapıyoruz
 
-                var kullaniciData = await baglanti.GetAsync("Kullanicilar/admin/KullaniciAdi"); // Veritabanından Kullanicilar/admin/KullaniciAdi klasörü içindeki verileri al
-
-                
+                var kullaniciAdiData = await baglanti.GetAsync("Kullanicilar/admin/KullaniciAdi"); // Veritabanından Kullanicilar/admin/KullaniciAdi klasörü içindeki verileri al
                 var sifreData = await baglanti.GetAsync("Kullanicilar/admin/Sifre");   // Veritabanından Kullanicilar/admin/Sifre klasörü içindeki verileri al
-                
-                if (kullaniciData.Body == "null")
+
+                if (kullaniciAdiData.Body == "null") // Eğer kullanıcı adı verisi yoksa firebasede
                 {
                     MessageBox.Show("Admin kaydı bulunamadı");
+                    return;
                 }
 
-                string kullaniciDb = kullaniciData.ResultAs<string>(); // Alınan sonucu stringe çevir
+                string kullaniciAdiDb = kullaniciAdiData.ResultAs<string>(); // Alınan sonucu stringe çevir
                 string sifreDb = sifreData.ResultAs<string>(); // Alınan sonucu stringe çevir
 
-                if (kullaniciDb == txtKullaniciAdi.Text && sifreDb == txtSifre.Text)
+                if (kullaniciAdiDb == txtKullaniciAdi.Text && sifreDb == txtSifre.Text)
                 {
                     MessageBox.Show("Ana Ekrana Yönlendiriliyorsunuz", "Giriş Yapıldı", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
@@ -117,6 +97,10 @@ namespace HealNet
 
         }
 
+        private void checkBoxSifreGoster_CheckedChanged(object sender, EventArgs e)
+        {
+            txtSifre.UseSystemPasswordChar = checkBoxSifreGoster.Checked;
+        }
 
 
 
@@ -180,10 +164,7 @@ namespace HealNet
         }
 
 
-        private void checkBoxSifreGoster_CheckedChanged(object sender, EventArgs e)
-        {
-            txtSifre.UseSystemPasswordChar = checkBoxSifreGoster.Checked;
-        }
+
 
 
     }

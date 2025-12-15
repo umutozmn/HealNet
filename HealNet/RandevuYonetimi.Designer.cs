@@ -48,7 +48,6 @@
             this.comboSaat = new System.Windows.Forms.ComboBox();
             this.dtgRandevular = new System.Windows.Forms.DataGridView();
             this.btnTemizle = new System.Windows.Forms.Button();
-            this.btnYenile = new System.Windows.Forms.Button();
             this.btnSil = new System.Windows.Forms.Button();
             this.btnKaydet = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
@@ -328,21 +327,6 @@
             this.btnTemizle.UseVisualStyleBackColor = false;
             this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click);
             // 
-            // btnYenile
-            // 
-            this.btnYenile.BackColor = System.Drawing.Color.White;
-            this.btnYenile.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnYenile.FlatAppearance.BorderSize = 0;
-            this.btnYenile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnYenile.Font = new System.Drawing.Font("Segoe UI Variable Text", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnYenile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(50)))));
-            this.btnYenile.Location = new System.Drawing.Point(1080, 12);
-            this.btnYenile.Name = "btnYenile";
-            this.btnYenile.Size = new System.Drawing.Size(106, 34);
-            this.btnYenile.TabIndex = 39;
-            this.btnYenile.Text = "YENİLE";
-            this.btnYenile.UseVisualStyleBackColor = false;
-            // 
             // btnSil
             // 
             this.btnSil.BackColor = System.Drawing.Color.White;
@@ -351,7 +335,7 @@
             this.btnSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSil.Font = new System.Drawing.Font("Segoe UI Variable Text", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSil.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(50)))));
-            this.btnSil.Location = new System.Drawing.Point(1208, 12);
+            this.btnSil.Location = new System.Drawing.Point(1208, 48);
             this.btnSil.Name = "btnSil";
             this.btnSil.Size = new System.Drawing.Size(101, 34);
             this.btnSil.TabIndex = 38;
@@ -421,7 +405,6 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(btnGeri);
             this.Controls.Add(this.btnTemizle);
-            this.Controls.Add(this.btnYenile);
             this.Controls.Add(this.btnSil);
             this.Controls.Add(this.btnKaydet);
             this.Controls.Add(this.dtgRandevular);
@@ -461,7 +444,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridView dtgRandevular;
         private System.Windows.Forms.Button btnTemizle;
-        private System.Windows.Forms.Button btnYenile;
         private System.Windows.Forms.Button btnSil;
         private System.Windows.Forms.Button btnKaydet;
         private System.Windows.Forms.TextBox txtHastaTelefon;

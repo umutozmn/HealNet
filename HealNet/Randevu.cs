@@ -23,7 +23,7 @@ namespace HealNet
         public string Saat { get; set; }         // 14:30
 
 
- public string Ucret { get; set; }        // Randevu ücreti
+     public string Ucret { get; set; }        // Randevu ücreti
 
     }
 }

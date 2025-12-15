@@ -21,79 +21,55 @@ namespace HealNet
         }
 
 
-
-
-
-        private void btnHastaKayit_Click(object sender, EventArgs e)
-        {
-            btnTemizle hastaKayit = new btnTemizle();
-            hastaKayit.Show();
-            this.Hide();
-        }
-
-        
-
-        private void btnDoktor_Click(object sender, EventArgs e)
-        {
-            DoktorYönetim doc = new DoktorYönetim();
-            doc.Show();
-            this.Hide();
-        }
-
-        private void btnRandevu_Click(object sender, EventArgs e)
-        {
-            RandevuYonetimi randevu = new RandevuYonetimi();
-            randevu.Show();
-            this.Hide();
-        }
-
-        private async void AnaEkran_Load(object sender, EventArgs e)
+        private async void AnaEkran_Load(object sender, EventArgs e) // Ana ekran yüklendiğinde çalışacak kodlar. Async yapıyoruz çünkü Firebase'den veri çekeceğiz. Async açılımı "asynchronous" yani "eşzamansız" demek. Yani işlemler arka planda çalışacak ve uygulama donmayacak.
         {
           
             // Bağlantıyı al
-            var baglanti = FirebaseBaglantisi.BaglantiGetir();
+            var baglanti = FirebaseBaglantisi.BaglantiGetir(); // Bağlantıyı getirip buna baglanti diyoruz 
 
-            // -------------------------------------------------------
-            // 1. HASTA SAYISINI ÇEK
-            // -------------------------------------------------------
-            var hastaCevap = await baglanti.GetAsync("Hastalar");
+            // 1. HASTA SAYISINI ALMA 
+            var hastaVeri = await baglanti.GetAsync("Hastalar"); // Firebase'den "Hastalar" verilerini çekiyoruz. await ile bekliyoruz çünkü bu işlem zaman alabilir.
 
             // Eğer "null" değilse sayıyı al, yoksa 0 yaz
-            if (hastaCevap.Body != "null")
+            if (hastaVeri.Body != "null") // 
             {
                 // Veriyi sözlük olarak alıyoruz
-                var liste = hastaCevap.ResultAs<Dictionary<string, Hasta>>();
-                lblHastaSayisi.Text = "Toplam Hasta: "+liste.Count.ToString();
+                var hastaVeriString = hastaVeri.ResultAs<Dictionary<string, Hasta>>(); // Burada stringe çeviriyoruz veriyi çünkü Firebaseden birçok türde veri gelebilir
+                lblHastaSayisi.Text = "Toplam Hasta: "+hastaVeriString.Count.ToString(); // Stringe çevrilen değeri sayıyor ve labela yazdırıyoruz
             }
             else
             {
                 lblHastaSayisi.Text = "0";
             }
 
-            // -------------------------------------------------------
-            // 2. DOKTOR SAYISINI ÇEK
-            // -------------------------------------------------------
-            var doktorCevap = await baglanti.GetAsync("Doktorlar");
 
-            if (doktorCevap.Body != "null")
+
+            // -------------------------------------------------------
+            // 2. DOKTOR SAYISINI ALMA
+            // -------------------------------------------------------
+            var doktorVeri = await baglanti.GetAsync("Doktorlar");
+
+            if (doktorVeri.Body != "null")
             {
-                var liste = doktorCevap.ResultAs<Dictionary<string, Doktor>>();
-                lblDoktorSayisi.Text = "Toplam Doktor: "+liste.Count.ToString();
+                var doktorVeriString = doktorVeri.ResultAs<Dictionary<string, Doktor>>();
+                lblDoktorSayisi.Text = "Toplam Doktor: "+doktorVeriString.Count.ToString();
             }
             else
             {
                 lblDoktorSayisi.Text = "0";
             }
 
+
+
             // -------------------------------------------------------
             // 3. RANDEVU SAYISINI ÇEK
             // -------------------------------------------------------
-            var randevuCevap = await baglanti.GetAsync("Randevular");
+            var randevuVeri = await baglanti.GetAsync("Randevular");
 
-            if (randevuCevap.Body != "null")
+            if (randevuVeri.Body != "null")
             {
-                var liste = randevuCevap.ResultAs<Dictionary<string, Randevu>>();
-                lblRandevuSayisi.Text = "Toplam Randevu: "+liste.Count.ToString();
+                var randevuVeriString = randevuVeri.ResultAs<Dictionary<string, Randevu>>();
+                lblRandevuSayisi.Text = "Toplam Randevu: "+ randevuVeriString.Count.ToString();
             }
             else
             {
@@ -101,7 +77,35 @@ namespace HealNet
             }
         }
 
-        private void btnCikis_Click(object sender, EventArgs e)
+
+
+        private void btnHastaKayit_Click(object sender, EventArgs e) // Hasta kayıt ekranına geçiş butonu
+        {
+            HastaKayit hastaKayit = new HastaKayit();
+            hastaKayit.Show();
+            this.Hide();
+        }
+
+
+
+        private void btnDoktor_Click(object sender, EventArgs e) // Doktor yönetim ekranına geçiş butonu
+        {
+            DoktorYönetim doc = new DoktorYönetim();
+            doc.Show();
+            this.Hide();
+        }
+
+        private void btnRandevu_Click(object sender, EventArgs e) // Randevu yönetim ekranına geçiş butonu
+        {
+            RandevuYonetimi randevu = new RandevuYonetimi();
+            randevu.Show();
+            this.Hide();
+        }
+
+
+
+
+        private void btnCikis_Click(object sender, EventArgs e) // Çıkış butonu
         {
             Application.Exit();
         }

@@ -38,21 +38,43 @@ namespace HealNet
             btnYenile.PerformClick();
         }
 
+
+
+        // Ekrandaki kutuları temizleyen ve sıfırlayan metot
+        private void AlanlariTemizle()
+        {
+            txtTC.Clear();
+            txtAd.Clear();
+            txtSoyad.Clear();
+            txtTelefon.Clear();
+            txtDeneyim.Clear();
+            txtCalismaSaatleri.Clear();
+
+            comboCinsiyet.SelectedIndex = -1;
+            comboBrans.SelectedIndex = -1;
+            comboUnvan.SelectedIndex = -1;
+
+            dtgDoktorlar.ClearSelection();
+            txtTC.Focus();
+        }
+
+
+
         private async void btnYenile_Click(object sender, EventArgs e)
         {
             var baglanti = FirebaseBaglantisi.BaglantiGetir();
 
             // Firebase'den verileri iste
-            var cevap = await baglanti.GetAsync("Doktorlar");
+            var doktorData = await baglanti.GetAsync("Doktorlar");
 
-            if (cevap.Body != "null")
+            if (doktorData.Body != "null")
             {
 
                 // Firebase'den gelen verileri tanımladık
-                var gelenVeriler = cevap.ResultAs<Dictionary<string, Doktor>>();
+                var doktorDataString = doktorData.ResultAs<Dictionary<string, Doktor>>();
 
                 // 1. Tanımlanan verileri hafızaya aldık
-                hafizadakiDoktorlar = gelenVeriler.Values.ToList();
+                hafizadakiDoktorlar = doktorDataString.Values.ToList();
 
                 // 2. Tabloyu doldurduk bu hafızadaki verilerle
                 dtgDoktorlar.DataSource = hafizadakiDoktorlar;
@@ -85,16 +107,19 @@ namespace HealNet
                 return;
             }
 
-            // B) Çakışma Kontrolü
-            var kontrolCevap = await baglanti.GetAsync("Doktorlar/" + txtTC.Text);
-            if (kontrolCevap.Body != "null")
+            //  Aynı TC var mı kontrolü
+            var tcKontrol = await baglanti.GetAsync("Doktorlar/" + txtTC.Text);
+
+            if (tcKontrol.Body != "null")
             {
                 MessageBox.Show("Bu TC ile kayıt zaten var.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
 
-            // C) Nesne Oluşturma
+            // Veri doldurmak için nesne gerekiyor
+
             Doktor yeniDoktor = new Doktor();
+
             yeniDoktor.TC = txtTC.Text;
             yeniDoktor.Ad = txtAd.Text;
             yeniDoktor.Soyad = txtSoyad.Text;
@@ -102,64 +127,98 @@ namespace HealNet
             yeniDoktor.Cinsiyet = comboCinsiyet.SelectedItem.ToString();
             yeniDoktor.Brans = comboBrans.Text;
             yeniDoktor.Unvan = comboUnvan.Text;
-
-            // Çalışma saatini de ekleyelim
             yeniDoktor.CalismaSaatleri = txtCalismaSaatleri.Text;
+            yeniDoktor.DeneyimYili = Convert.ToInt32(txtDeneyim.Text);
 
-            // Deneyim Yılı (Sayıya Çevirme)
-            int deneyim = 0;
-            int.TryParse(txtDeneyim.Text, out deneyim);
-            yeniDoktor.DeneyimYili = deneyim;
 
-            // D) Firebase'e Gönder
+
+            //  Firebase'e Gönder
             await baglanti.SetAsync("Doktorlar/" + txtTC.Text, yeniDoktor);
 
-            // E) Bilgi Ver
-            double ucret = yeniDoktor.MuayeneUcretiHesapla();
-            MessageBox.Show($"Doktor Kaydedildi.");
+            // Bilgi Ver
+            MessageBox.Show(txtAd.Text + " " + txtSoyad.Text + " adlı doktor kaydedildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // F) Temizle
             btnYenile.PerformClick();
             AlanlariTemizle();
-
-
         }
 
-        // Ekrandaki kutuları temizleyen ve sıfırlayan metot
-        private void AlanlariTemizle()
+
+
+
+        private async void btnSil_Click(object sender, EventArgs e)
         {
-            txtTC.Clear();
-            txtAd.Clear();
-            txtSoyad.Clear();
-            txtTelefon.Clear();
-            txtDeneyim.Clear();
-            txtCalismaSaatleri.Clear();
+            if (string.IsNullOrEmpty(txtTC.Text)) // Kullanıcı hiçbir doktor seçmemişse zaten TC kutusu boş olur yani kontrolü oradan yapıyoruz.
+            {
+                MessageBox.Show("Lütfen silinecek hastayı listeden seçiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Seçilmezse işlemi sonlandır, ilerlemesin
+            }
 
-            comboCinsiyet.SelectedIndex = -1;
-            comboBrans.SelectedIndex = -1;
-            comboUnvan.SelectedIndex = -1;
+            var secim = MessageBox.Show(txtAd.Text + " " + txtSoyad.Text + " kişisini silmek istiyor musunuz?", "Silme Onayı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (secim == DialogResult.Yes)  // MessageBoxButtons.YesNo ile çalışan bir komuttur. Evet mi denmiş diye kontrol ediyoruz.
+            {
+                var baglanti = FirebaseBaglantisi.BaglantiGetir();
 
-            dtgDoktorlar.ClearSelection();
-            txtTC.Focus();
+                await baglanti.DeleteAsync("Doktorlar/" + txtTC.Text); // Silme işlemi TC numarasına göre yapılır.
+
+                MessageBox.Show(txtAd.Text + " " + txtSoyad.Text + " adlı kayıt silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                btnYenile.PerformClick(); // Listeyi güncelle
+                AlanlariTemizle();        // Kutuları temizle
+            }
         }
 
-        private void btnTemizle_Click_1(object sender, EventArgs e)
+
+        private void dtgDoktorlar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            AlanlariTemizle();
+            if (e.RowIndex >= 0) // 0'dan büyükse (başlık satırına tıklanmadıysa) bir satıra tıklanmıştır zaten
+            {
+                var satir = dtgDoktorlar.Rows[e.RowIndex];
+
+                txtTC.Text = satir.Cells["TC"].Value.ToString();
+                txtAd.Text = satir.Cells["Ad"].Value.ToString();
+                txtSoyad.Text = satir.Cells["Soyad"].Value.ToString();
+                txtTelefon.Text = satir.Cells["Telefon"].Value.ToString();
+                comboCinsiyet.Text = satir.Cells["Cinsiyet"].Value.ToString();
+                comboBrans.Text = satir.Cells["Brans"].Value.ToString();
+                comboUnvan.Text = satir.Cells["Unvan"].Value.ToString();
+                txtDeneyim.Text = satir.Cells["DeneyimYili"].Value.ToString();
+                txtCalismaSaatleri.Text = satir.Cells["CalismaSaatleri"].Value.ToString();
+
+            }
         }
 
-        private void comboBrans_SelectedIndexChanged_1(object sender, EventArgs e)
+
+
+        private void txtAra_TextChanged(object sender, EventArgs e)
+        {
+            string aranan = txtAra.Text.ToLower();
+
+            List<Doktor> arananListe = new List<Doktor>();  // Sonuçları buna koyacağız 
+
+            foreach (Doktor d in hafizadakiDoktorlar)
+            {
+                if (d.Ad.ToLower().Contains(aranan) || d.Soyad.ToLower().Contains(aranan) || d.TC.Contains(aranan)) // Doktorun adı, soyadı veya TC'si aranan metni içeriyorsa
+                {
+                    arananListe.Add(d);
+                }
+            }
+
+            dtgDoktorlar.DataSource = arananListe;
+        }
+
+
+        private void comboBrans_SelectedIndexChanged_1(object sender, EventArgs e) // Branş seçimi değiştiğinde çalışma saatlerini otomatik dolduran metot
         {
             // Eğer kullanıcı seçimi kaldırdıysa (Temizle'ye bastıysa)
-            if (comboBrans.SelectedIndex == -1)
+            if (comboBrans.SelectedIndex == -1) // -1 hiçbir şey seçilmemiş demek
             {
-                txtCalismaSaatleri.Clear(); // Saati temizle
+                txtCalismaSaatleri.Clear(); // Saati temizle diyoruz çünkü burada branş seçilmemiş
                 return; // Ve aşağıya inme, metodu burada bitir.
             }
 
-
-
-            switch (comboBrans.Text)
+             
+            switch (comboBrans.Text) 
             {
                 case "Dahiliye":
                 case "Kulak, Burun, Boğaz (KBB)":
@@ -194,14 +253,11 @@ namespace HealNet
                     txtCalismaSaatleri.Text = "08:30 - 17:00";
                     break;
 
-                default:
+                default: // Diğer tüm branşlar için varsayılan saatler
                     txtCalismaSaatleri.Text = "09:00 - 17:00";
                     break;
             }
         }
-
-
-
 
 
 
@@ -214,57 +270,11 @@ namespace HealNet
         }
 
 
-
-
-        private async void btnSil_Click(object sender, EventArgs e)
+        private void btnTemizle_Click_1(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtTC.Text)) // Kullanıcı hiçbir doktor seçmemişse zaten TC kutusu boş olur yani kontrolü oradan yapıyoruz.
-            {
-                MessageBox.Show("Lütfen silinecek hastayı listeden seçiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; // Seçilmezse işlemi sonlandır, ilerlemesin
-            }
-
-            var secim = MessageBox.Show(txtAd.Text + " " + txtSoyad.Text + " kişisini silmek istiyor musunuz?", "Silme Onayı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (secim == DialogResult.Yes)  // MessageBoxButtons.YesNo ile çalışan bir komuttur. Evet mi denmiş diye kontrol ediyoruz.
-            {
-                var baglanti = FirebaseBaglantisi.BaglantiGetir();
-
-                await baglanti.DeleteAsync("Doktorlar/" + txtTC.Text); // Silme işlemi TC numarasına göre yapılır.
-
-                MessageBox.Show("Kayıt silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                btnYenile.PerformClick(); // Listeyi güncelle
-                AlanlariTemizle();        // Kutuları temizle
-            }
+            AlanlariTemizle();
         }
 
-        private void dtgDoktorlar_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0) // 0'dan büyükse (başlık satırına tıklanmadıysa) bir satıra tıklanmıştır zaten
-            {
-                var satir = dtgDoktorlar.Rows[e.RowIndex];
 
-                txtTC.Text = satir.Cells["TC"].Value.ToString();
-                txtAd.Text = satir.Cells["Ad"].Value.ToString();
-                txtSoyad.Text = satir.Cells["Soyad"].Value.ToString();
-                txtTelefon.Text = satir.Cells["Telefon"].Value.ToString();
-                comboCinsiyet.Text = satir.Cells["Cinsiyet"].Value.ToString();
-                comboBrans.Text = satir.Cells["Brans"].Value.ToString();
-                comboUnvan.Text = satir.Cells["Unvan"].Value.ToString();
-                txtDeneyim.Text = satir.Cells["DeneyimYili"].Value.ToString();
-                txtCalismaSaatleri.Text = satir.Cells["CalismaSaatleri"].Value.ToString();
-
-            }
-        }
-
-        private void txtAra_TextChanged(object sender, EventArgs e)
-        {
-            string aranan = txtAra.Text.ToLower();
-
-            var filtrelenenListe = hafizadakiDoktorlar
-                .Where(x => x.Ad.ToLower().Contains(aranan) || x.Soyad.ToLower().Contains(aranan) ||  x.TC.Contains(aranan)) .ToList();
-
-            dtgDoktorlar.DataSource = filtrelenenListe;
-        }
     }
 }

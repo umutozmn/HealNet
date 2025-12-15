@@ -1,6 +1,6 @@
 ﻿namespace HealNet
 {
-    partial class btnTemizle
+    partial class HastaKayit
     {
         /// <summary>
         /// Required designer variable.
@@ -52,7 +52,7 @@
             this.btnYenile = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtAra = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnTemizle = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             btnGeri = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgHastalar)).BeginInit();
@@ -367,21 +367,21 @@
             this.txtAra.TabIndex = 25;
             this.txtAra.TextChanged += new System.EventHandler(this.txtAra_TextChanged);
             // 
-            // button1
+            // btnTemizle
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Variable Text", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(50)))));
-            this.button1.Location = new System.Drawing.Point(6, 605);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(129, 34);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "TEMİZLE";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnTemizle.BackColor = System.Drawing.Color.White;
+            this.btnTemizle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTemizle.FlatAppearance.BorderSize = 0;
+            this.btnTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTemizle.Font = new System.Drawing.Font("Segoe UI Variable Text", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnTemizle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(50)))));
+            this.btnTemizle.Location = new System.Drawing.Point(6, 605);
+            this.btnTemizle.Name = "btnTemizle";
+            this.btnTemizle.Size = new System.Drawing.Size(129, 34);
+            this.btnTemizle.TabIndex = 26;
+            this.btnTemizle.Text = "TEMİZLE";
+            this.btnTemizle.UseVisualStyleBackColor = false;
+            this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click);
             // 
             // label9
             // 
@@ -395,14 +395,14 @@
             this.label9.TabIndex = 9;
             this.label9.Text = "Hasta Ara";
             // 
-            // btnTemizle
+            // HastaKayit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(50)))));
             this.ClientSize = new System.Drawing.Size(1321, 748);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnTemizle);
             this.Controls.Add(this.txtAra);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnYenile);
@@ -412,7 +412,7 @@
             this.Controls.Add(btnGeri);
             this.Controls.Add(this.btnKaydet);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "btnTemizle";
+            this.Name = "HastaKayit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HastaKayit";
             this.Load += new System.EventHandler(this.HastaKayit_Load);
@@ -449,7 +449,7 @@
         private System.Windows.Forms.Button btnYenile;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtAra;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnTemizle;
         private System.Windows.Forms.Label label9;
     }
 }
